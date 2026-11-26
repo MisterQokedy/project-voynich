@@ -9,8 +9,8 @@ This repository holds the code, transliterations and model weights behind 249 te
 
 ## In plain terms: the scribe's writing habits
 
-* Words are built from fixed slots. Every word follows the same pattern: an optional beginning, a middle built around the tall "gallows" letters, then an ending. It's like a word built from Lego pieces that only snap together in a certain order. Even the rare one-off words obey it.
-* Copy and tweak. Rather than inventing each word, the scribe mostly looked back at a word written recently, often on the line above, and wrote it again with a small change. That's why near-identical words cluster together.
+* Words are built from fixed slots. Every word follows the same pattern: an optional beginning, a middle built around the tall "gallows" letters, then an ending. It's like a word built from Lego pieces that only snap together in a certain order. The rare one-off words keep most of these habits, though many of them combine a beginning and an ending that never appear together in the more common words.
+* Copy and tweak. Rather than inventing each word, the scribe mostly looked back at a recent word, within the last few dozen, and wrote it again with a small change. That's why near-identical words cluster together.
 * Lines have their own start and end habits. Certain letters and word types favour the start of a line and others the end, much like a capital letter starts a sentence. That habit turns out to be normal for scribes of the period.
 * Each section and scribe has its own style. The two "dialects" (Currier A and B) and different sections use slightly different stocks of words and endings, like two people with different favourite phrases.
 * Simple freedom of choice! The scribe was free to choose which word to copy and how much to change it. None of this needs the text to carry meaning, but none of it rules meaning out either.
