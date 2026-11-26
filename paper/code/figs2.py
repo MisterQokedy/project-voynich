@@ -30,11 +30,16 @@ for ax,(t,v) in zip(axs,[('Share of one-off words',[.138,.077,.08]),('One-offs w
     ax.set_title(t,fontsize=9,loc='left',color=TXT)
 fig.suptitle('The generator makes rare words by local edits; the manuscript does not',fontsize=11,x=.02,ha='left',color=TXT)
 fig.tight_layout(); fig.savefig(O+'fig7_oneoffs.png',dpi=200)
-# Fig 8: P3-c line-edge pen form
-fig,ax=plt.subplots(figsize=(7,2.8))
-lab=['Line-initial vs mid-line','Line-final vs mid-line','Same, shape features only (initial)','Same, shape features only (final)','Placebo and box controls']
-v=[.641,.587,.633,.586,.50]; ax.barh(range(5),v,color=[BLUE,BLUE,'#7fb3ee','#7fb3ee',LG],height=.6)
-for i,x in enumerate(v): ax.text(x+.003,i,f'{x:.3f}' if i<4 else '≈0.50 (chance)',va='center',fontsize=8)
-ax.axvline(.5,color=TXT,lw=1,ls='--'); ax.set_xlim(.45,.70); ax.set_yticks(range(5),lab); ax.invert_yaxis(); ax.set_xlabel('Held-out AUC (glyph pen form, size removed)')
-ax.set_title('Glyphs at line edges are drawn differently (P3-c)',fontsize=11,loc='left',color=TXT)
+# Fig 8: P3-c line-edge pen form, Voynich vs control hand (P3-e)
+fig,ax=plt.subplots(figsize=(7,2.9))
+grp=['Line-initial vs mid-line','Line-final vs mid-line']
+vv=[.641,.587]; cc=[.681,.556]; y=np.arange(2)
+ax.barh(y-.18,vv,height=.34,color=BLUE,label='Voynich (P3-c)')
+ax.barh(y+.18,cc,height=.34,color=GRAY,label='Control hand, BSB Clm 5905, 1479 (P3-e)')
+for i in range(2):
+    ax.text(vv[i]+.003,i-.18,f'{vv[i]:.3f}',va='center',fontsize=8); ax.text(cc[i]+.003,i+.18,f'{cc[i]:.3f}',va='center',fontsize=8)
+ax.axvline(.5,color=TXT,lw=1,ls='--'); ax.text(.502,1.55,'chance',fontsize=7,color='#555')
+ax.set_xlim(.45,.72); ax.set_yticks(y,grp); ax.invert_yaxis(); ax.set_xlabel('Held-out AUC (glyph pen form, size removed)')
+ax.legend(fontsize=8,loc='lower right',frameon=False)
+ax.set_title('A dated Latin hand marks line starts at least as strongly',fontsize=11,loc='left',color=TXT)
 fig.tight_layout(); fig.savefig(O+'fig8_line_edge_penform.png',dpi=200)

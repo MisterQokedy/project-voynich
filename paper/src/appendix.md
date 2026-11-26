@@ -1,7 +1,7 @@
 
 # Appendix A: test register {.appendix .unnumbered}
 
-All 248 test entries in the consolidated findings, one row per test, in the order recorded. "Pre" marks pre-registered tests. Verdicts are quoted from each entry, or written by hand where an entry had none. The machine-readable table is `master_results_table.csv`.
+All 249 test entries in the consolidated findings, one row per test, in the order recorded. "Pre" marks pre-registered tests. Verdicts are quoted from each entry, or written by hand where an entry had none. The machine-readable table is `master_results_table.csv`.
 
 <table class="reg"><thead><tr><th>ID</th><th>Theme</th><th>Test</th><th>Pre</th><th>Verdict</th></tr></thead><tbody>
 <tr><td>§2</td><td>Page order &amp; physical (§2)</td><td>Do pages on the same sheet share text? (same-sheet similarity)</td><td></td><td>CONFIRMED: same-sheet pages share vocabulary far beyond controls</td></tr>
@@ -249,15 +249,16 @@ All 248 test entries in the consolidated findings, one row per test, in the orde
 <tr><td>P5-l</td><td>Ink &amp; image tests</td><td>P5-l (cloud, 26 Nov 2026): published corrections and overwrites, literature sweep — reading only; ~16 scribal corrections, not 40 …</td><td></td><td>reading only; ~16 scribal corrections, not 40</td></tr>
 <tr><td>GS</td><td>Other</td><td>Glyph segmenter and letter-level reruns (PC, 26 Nov 2026) / GS (trained per-glyph segmenter, glyphseg/): PASSES validation.</td><td></td><td>PASSES validation</td></tr>
 <tr><td>H10h</td><td>Ink &amp; image tests</td><td>Glyph segmenter and letter-level reruns (PC, 26 Nov 2026) / H10h (scribe gate with GS masks): NOT TESTABLE, third failure.</td><td></td><td>NOT TESTABLE, third failure</td></tr>
-<tr><td>P3-c</td><td>Ink &amp; image tests</td><td>Glyph segmenter and letter-level reruns (PC, 26 Nov 2026) / P3-c (line-edge pen form, clipped GS masks): PASS, ROBUST, pen form.</td><td></td><td>PASS, ROBUST, pen form</td></tr>
+<tr><td>P3-c</td><td>Ink &amp; image tests</td><td>Glyph segmenter and letter-level reruns (PC, 26 Nov 2026) / P3-c (line-edge pen form, clipped GS masks): PASS, ROBUST, pen form.</td><td></td><td>PASS within the Voynich; superseded by P3-e (ordinary scribal behaviour)</td></tr>
 <tr><td>P4-L-d</td><td>Ink &amp; image tests</td><td>Glyph segmenter and letter-level reruns (PC, 26 Nov 2026) / P4-L-d (f88v first-glyph column, model boxes): NOT SUPPORTED.</td><td></td><td>NOT SUPPORTED</td></tr>
 <tr><td>P4-S</td><td>Ink &amp; image tests</td><td>Glyph segmenter and letter-level reruns (PC, 26 Nov 2026) / P4-S (f105r ink-session breaks): NOT FOUND.</td><td></td><td>NOT FOUND</td></tr>
+<tr><td>P3-e</td><td>Ink &amp; image tests</td><td>P3-e (PC, 26 Nov 2026): control hand for the P3-c line-edge pen-form effect — line-initial: ORDINARY; line-final: weak in both hands (p3e/, …</td><td>yes</td><td>ORDINARY: control hand shows line-initial effect as strongly (0.681 vs 0.641); line-final weak in both</td></tr>
 </tbody></table>
 
 
 # Appendix B: pre-registrations {.appendix .unnumbered}
 
-119 of 248 tests were pre-registered: the decision rule, bands and controls were written to a `PREREG.md` file in the test's folder before the data were examined. The list below gives each pre-registered test and its folder in the repository's results archive.
+120 of 249 tests were pre-registered: the decision rule, bands and controls were written to a `PREREG.md` file in the test's folder before the data were examined. The list below gives each pre-registered test and its folder in the repository's results archive.
 
 <table class="reg"><thead><tr><th>ID</th><th>Test</th><th>Folder</th></tr></thead><tbody>
 <tr><td>§5d</td><td>Literature constraints at full resolution (P7/P9 thread, 22 Nov, physical_p7p9/REPORT.md, pre-registered)</td><td>physical_p7p9/REPORT.md; physical_p7p9/figures/T2_*</td></tr>
@@ -379,12 +380,13 @@ All 248 test entries in the consolidated findings, one row per test, in the orde
 <tr><td>OO-SP</td><td>OO-SP (cloud, 26 Nov 2026, pre-registered): spelling patterns in free one-offs (oneoffs/REPORT_SP.md)</td><td>oneoffs/REPORT_SP.md</td></tr>
 <tr><td>N1-b</td><td>N1-b (cloud, 26 Nov 2026): re-keying-invariant word-order metric — FAIL (n1b/)</td><td>n1b/</td></tr>
 <tr><td>S6-Z5</td><td>S6-Z5 / A4-P full re-search (cloud, 26 Nov 2026): onset habit + A4 as statistic 25, refit on Z1b — not kept (s6z/z5/)</td><td>s6z/z5/</td></tr>
+<tr><td>P3-e</td><td>P3-e (PC, 26 Nov 2026): control hand for the P3-c line-edge pen-form effect — line-initial: ORDINARY; line-final: weak …</td><td>p3e/</td></tr>
 </tbody></table>
 
 
 # Appendix C: methods and numbers by test {.appendix .unnumbered}
 
-![P3-d, illustration only: mean segmenter masks for line-edge and mid-line glyphs. Red marks more ink at the line edge, blue more ink mid-line. Band-fit error at line ends partly confounds these means, so they are not evidence.](../figures/fig9_p3d_line_edge_masks.png){width=48%}
+![P3-d, illustration only: mean segmenter masks for line-edge and mid-line glyphs. Red marks more ink at the line edge, blue more ink mid-line. Band-fit error at line ends partly confounds these means, so they are not evidence. Derived from images of MS 408, Beinecke Rare Book and Manuscript Library, Yale University.](../figures/fig9_p3d_line_edge_masks.png){width=48%}
 
 Each entry gives the test, its verdict, its controls and an excerpt of the recorded result. Full write-ups, code and outputs are in the folders named in Appendix B.
 
@@ -607,9 +609,10 @@ Each entry gives the test, its verdict, its controls and an excerpt of the recor
 <div class='entry'><p><b>P4-L-c. M1g-b (cloud, 26 Nov 2026): doubtful a/o and r/s glyphs vs the statistics that use them (m1gb/) / P4-L-c (f88v first-glyph column, box-free), NOT TESTABLE</b> <span class='v'>NOT TESTABLE</span></p><p>P4-L-c (f88v first-glyph column, box-free), NOT TESTABLE (p4lc/). The v2 measure still lands on specks in about 5 of 16 lines. Hint only: on f88v the gap after glyph 1 is 0.74 xh vs 0.20 later (p 0.0065), with no such gap on f88r (p 0.26). Left-edge alignment is not shown (CI [-0.06, 0.78]). It needs letter boxes on f88v.</p></div>
 <div class='entry'><p><b>P5-l. P5-l (cloud, 26 Nov 2026): published corrections and overwrites, literature sweep — reading only; ~16 scribal corrections, not 40 (lit_corrections/published_corrections.csv)</b> <span class='v'>reading only; ~16 scribal corrections, not 40</span></p><p>- Sources read: Zandbergen voynich.nu (writing.html &quot;Apparent lack of corrections&quot; gallery, folio pages), Stolfi (2004 retouching page, Note 075 report and Ninja posts), Pelling (Cipher Mysteries 2014, scan wishlist), Voynich Ninja printthreads 136, 3259, 4899 (replies login-gated, so only opening posts read), McCrone 2009 via Stolfi&#x27;s sample table, Davis 2024 MSI press. Not reached: Glen Claston&#x27;s transcription note</p></div>
 <div class='entry'><p><b>H10h. Glyph segmenter and letter-level reruns (PC, 26 Nov 2026) / H10h (scribe gate with GS masks): NOT TESTABLE, third failure.</b> <span class='v'>NOT TESTABLE, third failure</span></p><p>H10h (scribe gate with GS masks): NOT TESTABLE, third failure. Accuracy 0.555 (need 0.70), p 0.21. The k-crossbar and n-tail measures now work by eye, and only a weak k trend repeats (p 0.10). Mask quality was not the problem: Davis&#x27;s k/t/n criteria as measured here don&#x27;t carry the Scribe 2/3 difference.</p></div>
-<div class='entry'><p><b>P3-c. Glyph segmenter and letter-level reruns (PC, 26 Nov 2026) / P3-c (line-edge pen form, clipped GS masks): PASS, ROBUST, pen form.</b> <span class='v'>PASS, ROBUST, pen form</span></p><p>P3-c (line-edge pen form, clipped GS masks): PASS, ROBUST, pen form. L vs M AUC 0.641 (p 0.005), RL vs RM 0.587 (p 0.005); placebos and box control at chance. HOG-only (extent removed) 0.633 / 0.586, so the signal is pen form, not mask extent. Strongest: line-initial t 0.90, sh 0.72, line-final n 0.66; line-initial y often has a long down-left tail. Physical support for line-position-specific writing.</p><p class='c'>Controls: placebos and box control at chance.</p></div>
+<div class='entry'><p><b>P3-c. Glyph segmenter and letter-level reruns (PC, 26 Nov 2026) / P3-c (line-edge pen form, clipped GS masks): PASS, ROBUST, pen form.</b> <span class='v'>PASS within the Voynich; superseded by P3-e (ordinary scribal behaviour)</span></p><p>P3-c (line-edge pen form, clipped GS masks): PASS, ROBUST, pen form. L vs M AUC 0.641 (p 0.005), RL vs RM 0.587 (p 0.005); placebos and box control at chance. HOG-only (extent removed) 0.633 / 0.586, so the signal is pen form, not mask extent. Strongest: line-initial t 0.90, sh 0.72, line-final n 0.66; line-initial y often has a long down-left tail. Physical support for line-position-specific writing.</p><p class='c'>Controls: placebos and box control at chance.</p></div>
 <div class='entry'><p><b>P4-L-d. Glyph segmenter and letter-level reruns (PC, 26 Nov 2026) / P4-L-d (f88v first-glyph column, model boxes): NOT SUPPORTED.</b> <span class='v'>NOT SUPPORTED</span></p><p>P4-L-d (f88v first-glyph column, model boxes): NOT SUPPORTED. Model letters match ZL at 94.4%. sd(e1) 0.62 vs sd(e2) 0.60 xh; no extra gap (p 0.58); f88r the same. The P4-L-c hint doesn&#x27;t hold. Low power (about 16 lines per page).</p></div>
 <div class='entry'><p><b>P4-S. Glyph segmenter and letter-level reruns (PC, 26 Nov 2026) / P4-S (f105r ink-session breaks): NOT FOUND.</b> <span class='v'>NOT FOUND</span></p><p>P4-S (f105r ink-session breaks): NOT FOUND. The method is calibrated on f115r (p 0.001). f105r just fades down the page (0.55 -&gt; 0.46), with no clean step and no odd line. 10 of 37 lines are unboxed, including line 23.</p><p class='c'>Controls: The method is calibrated on f115r (p 0.001).</p></div>
+<div class='entry'><p><b>P3-e. P3-e (PC, 26 Nov 2026): control hand for the P3-c line-edge pen-form effect — line-initial: ORDINARY; line-final: weak in both hands (p3e/, PC Voynich/p3e/)</b> <span class='v'>ORDINARY: control hand shows line-initial effect as strongly (0.681 vs 0.641); line-final weak in both</span></p><p>Pre-registered (p3e/PREREG.md, two deviations decided before outcomes, in p3e/RESUME.md). Control: BSB Clm 5905 (Ebersberg 1479, Vitus Auslasser; Latin Macer verse + remedy prose, gothic cursive), 336 text pages, 6,047 lines, 157k letters. Same pipeline as P3-c: Kraken (CATMuS-Medieval) letter cuts, GS segmenter retrained on this hand&#x27;s own ~4,000 clean exemplars (rendered validation IoU 0.94–0.98, baseline 0.70–</p><p class='c'>Controls: Control: BSB Clm 5905 (Ebersberg 1479, Vitus Auslasser; Same pipeline as P3-c: Kraken (CATMuS-Medieval) letter cuts, GS segmenter retrained on this hand&#x27;s own ~4,000 clean exemplars (rendered validation IoU 0.94–0.98, baseline 0.70–0.80), unchanged p3.py with …</p></div>
 
 ## Decipherment / cribs {.unnumbered}
 
@@ -708,6 +711,61 @@ Each entry gives the test, its verdict, its controls and an excerpt of the recor
 
 # Appendix D: code and data availability {.appendix .unnumbered}
 
-Everything needed to rerun the main tests is at github.com/MisterQokedy/project-voynich: the frozen S6-Z1b generator, the 24-statistic scorer, the decipherment harness and crib decoders, the language test, the sheet-order search with its shuffled null, the line and boundary statistics, the one-off analysis, the Kraken line-reader and glyph-segmenter code, the letter-box feature code and the scripts that build this paper's table and figures. Our code is released under MIT and this text and its figures under CC BY 4.0.
+Everything needed to rerun the main tests is at github.com/MisterQokedy/project-voynich: the frozen S6-Z1b generator, the 24-statistic scorer, the decipherment harness and crib decoders, the language test, the sheet-order search with its shuffled null, the line and boundary statistics, the one-off analysis, the Kraken line-reader and glyph-segmenter code, the letter-box feature code, the P3-e control-hand code, the one-off word catalogue and the scripts that build this paper's table and figures. Our code is released under MIT. This text and its figures are © 2026 Paul Stark and licensed under CC BY 4.0.
 
 The repository includes the four CC0 transliterations (ZL3b-n, IT2a-n, RF1b-e, CD2a-n) from voynich.nu, and Timm's SelfCitationTextGenerator with our patches under his MIT notice. Trained weights (three Kraken line-reader seeds and two glyph-segmenter folds, about 62 MB) are in the repository's `weights/` folder with SHA-256 checksums. Comparison corpora and the Beinecke images are not redistributed; download scripts fetch them from their publishers. Kraken is installed as a pip dependency.
+
+
+Figures that show or are derived from manuscript images credit the Beinecke Rare Book and Manuscript Library, Yale University (MS 408, a public-domain item reused under Yale's open-access policy) and, for the control hand, the Bayerische Staatsbibliothek, Munich (Clm 5905).
+
+
+
+# Appendix E: catalogue of free one-off words {.appendix .unnumbered}
+
+This appendix summarises a catalogue of the one-off words that the generator fails to reproduce (Section 6.2). A **free one-off** occurs once in the ZL3b-n transliteration (EVA) and is at least three edits away from every frequent word (count 10 or more) and from each of the 40 words before it. There are 1,328 of them, 24% of the 5,526 one-offs. Classification, controls and statistics come from the earlier one-off studies (OO, OO-SP, OO-N, OO-L in Appendix A). Nothing was refitted for the catalogue; the only new computation is a descriptive word split and a pair lookup.
+
+**Full lists in the repository.** The complete data are in `data/oneoff_catalogue/` at https://github.com/MisterQokedy/project-voynich:
+
+- `free_oneoffs_catalogue.csv`: all 1,328 free one-offs, one row each, with page, line, section, Currier language, scribe (Davis hand), quire, position in the line, placement (paragraph 1,038; label 138; circle 127; radial 25), length, a prefix–core–ending split, gallows count, positions of p and f, doubled e or i, start glyph and last two letters, a flag for start–ending pairs found only in one-offs, and the nearest frequent word with its edit distance.
+- `oneoff_only_pairs.csv`: the 133 start–ending pairs (first glyph plus last two letters) that occur in free one-offs and in no word seen twice or more, with counts and up to five example words.
+- `code/build.py`: rebuilds both files from the one-off table and the ZL transliteration.
+
+The prefix–core–ending split is a descriptive convention, not a claim about morphology: the core runs from the first gallows or bench (ch, sh) to the last, and takes in any e or h that follows. Of the free one-offs, 250 contain p, 100 contain f and 218 have two or more gallows. 157 (12%) carry a start–ending pair that never appears in a recurring word; most pairs occur once, and the commonest are p…ry (4 words) and r…ty, o…sh, t…ry and d…ed (3 each).
+
+## E.1 Doubled e or i {.unnumbered}
+
+Spelling rates are length-weighted to free one-off lengths 6–11, with 95% bootstrap intervals.
+
+| Group | Share with a doubled glyph | ee per 100 words | ii per 100 words |
+|---|---|---|---|
+| Real free one-offs | 0.30 [0.28, 0.33] | 26 | 11 |
+| Real one-offs within two edits of a recent word | 0.48 [0.44, 0.51] | 21 | 10 |
+| Unit-shuffled free one-offs (control) | 0.38 [0.36, 0.41] | | |
+| S6-Z generator free one-offs (control) | 0.44 [0.42, 0.47] | 36 | 23 |
+| German herbal free one-offs, own lengths (control) | 0.23 | | |
+
+## E.2 Stacked gallows {.unnumbered}
+
+| Group | Share with two or more gallows |
+|---|---|
+| Real free one-offs | 0.16 [0.14, 0.18] |
+| Real one-offs within two edits of a recent word | 0.085 [0.06, 0.11] |
+| S6-Z generator free one-offs (control) | 0.107 [0.09, 0.12] |
+
+The p and f pairs are over-represented in free one-offs, against all tokens, more strongly than in generator one-offs: ep 7.7× (generator 3.4×), po 4.6× (2.3×), fch 3.8× (1.8×), of 3.6× (1.7×). Of the 218 multi-gallows words, 113 are mid-line, so these are not only paragraph-initial words. Unit shuffling keeps the gallows count fixed, so it is not a control for this table.
+
+## E.3 Placement: label enrichment {.unnumbered}
+
+Holm-corrected; the null shuffles placement labels.
+
+| Comparison | Free share of one-offs | Shuffled-placement null | p |
+|---|---|---|---|
+| Labels vs paragraphs | 0.33 vs 0.23 (+0.10) | +0.04 | 0.0015 (length-stratified 0.0005) |
+| Circle and radial text vs paragraphs | +0.045 | +0.031 | 0.23, not significant |
+| Line-first vs rest of line | +0.069 | −0.005 | 0.0005 (length-stratified 0.06) |
+
+The label excess survives length control; the line-first excess mostly reflects length. Label one-offs are no closer to each other across pages than matched paragraph one-offs (0.320 vs 0.323, p 0.32), so the excess does not point to a shared stock of names.
+
+## E.4 Limits {.unnumbered}
+
+These are regularities of spelling and placement. Tests of meaning on the same words failed: free one-offs do not recur as near-variants on pages with similar plant drawings (p 0.71), their tie to same-section pages matches other one-offs of equal length, and a noun-profile comparison with German herbals did no better than generated text. The catalogue is offered as material for further study and does not argue for any reading.

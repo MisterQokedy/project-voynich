@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Testing Ideas about the Voynich Manuscript: Page Order, Text Type and a Copy-and-Vary Model</title>
+  <title>A copying procedure, not a cipher: 249 controlled tests on the Voynich Manuscript</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -26,16 +26,18 @@
 </head>
 <body>
 <div class="titlepage">
+<div class="preprint">Preprint · not peer-reviewed · Version 1.1</div>
 <img class="icon" src="../brand/icon_white.png" alt="">
-<div class="ttl">Testing Ideas about the Voynich Manuscript</div>
-<div class="sub">Page order, text type and a copy-and-vary model, tested against shuffled and generated controls</div>
-<div class="byline">Claude Opus 5.5 and MisterQokedy</div>
-<div class="date">26 November 2026 · Version 1.0</div>
-<div class="licence">Text and figures: CC BY 4.0 · Code: MIT<br>Code, data and model weights: github.com/MisterQokedy/project-voynich</div>
+<div class="ttl">A copying procedure, not a cipher</div>
+<div class="sub">249 controlled tests on the Voynich Manuscript</div>
+<div class="byline">Paul Stark and Claude Opus 5.5</div>
+<div class="date">26 November 2026 · Version 1.1</div>
+<div class="blurb">We ran 249 tests on the Voynich Manuscript, most of them checks of ideas other researchers have proposed. Every test was compared against shuffled or machine-generated text, and many were pre-registered. No reading or cipher held up on pages it wasn't built from, and we claim no translation. The text's statistics are well explained by a scribe copying and varying earlier words, with habits tied to line position, extending the self-citation model of Timm and Schinner. We also set out what that model still can't reproduce, and a catalogue of the one-off words it misses. The work was carried out with AI assistance (Claude) and checked by the author. Code, data and models are openly available.</div>
+<div class="licence">© 2026 Paul Stark. Licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).<br>Code: MIT licence · Code, data and model weights: https://github.com/MisterQokedy/project-voynich<br>Manuscript images: Beinecke Rare Book and Manuscript Library, Yale University (MS 408).<br>AI assistance: analyses, code and text by Claude Opus 5.5 (Anthropic) under the author's direction; results checked by the author (see the AI assistance statement).</div>
 </div>
 <header id="title-block-header">
-<h1 class="title">Testing Ideas about the Voynich Manuscript: Page
-Order, Text Type and a Copy-and-Vary Model</h1>
+<h1 class="title">A copying procedure, not a cipher: 249 controlled
+tests on the Voynich Manuscript</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">Contents</h2>
@@ -52,19 +54,25 @@ class="toc-section-number">3</span> Part I: page order</a></li>
 <li><a href="#part-ii-what-kind-of-text"
 id="toc-part-ii-what-kind-of-text"><span
 class="toc-section-number">4</span> Part II: what kind of text</a></li>
-<li><a href="#part-iii-a-copy-and-vary-model"
-id="toc-part-iii-a-copy-and-vary-model"><span
-class="toc-section-number">5</span> Part III: a copy-and-vary
-model</a></li>
 <li><a href="#robustness-and-image-tests"
 id="toc-robustness-and-image-tests"><span
-class="toc-section-number">6</span> Robustness and image tests</a></li>
+class="toc-section-number">5</span> Robustness and image tests</a></li>
+<li><a href="#part-iii-a-copy-and-vary-model"
+id="toc-part-iii-a-copy-and-vary-model"><span
+class="toc-section-number">6</span> Part III: a copy-and-vary
+model</a></li>
+<li><a href="#what-the-procedure-leaves-over-three-kinds-of-finding"
+id="toc-what-the-procedure-leaves-over-three-kinds-of-finding"><span
+class="toc-section-number">7</span> What the procedure leaves over:
+three kinds of finding</a></li>
 <li><a href="#discussion" id="toc-discussion"><span
-class="toc-section-number">7</span> Discussion</a></li>
+class="toc-section-number">8</span> Discussion</a></li>
 <li><a href="#limitations" id="toc-limitations"><span
-class="toc-section-number">8</span> Limitations</a></li>
+class="toc-section-number">9</span> Limitations</a></li>
 <li><a href="#future-work" id="toc-future-work"><span
-class="toc-section-number">9</span> Future work</a></li>
+class="toc-section-number">10</span> Future work</a></li>
+<li><a href="#ai-assistance-statement"
+id="toc-ai-assistance-statement">AI assistance statement</a></li>
 <li><a href="#acknowledgements"
 id="toc-acknowledgements">Acknowledgements</a></li>
 <li><a href="#references" id="toc-references">References</a></li>
@@ -79,16 +87,20 @@ numbers by test</a></li>
 <li><a href="#appendix-d-code-and-data-availability"
 id="toc-appendix-d-code-and-data-availability">Appendix D: code and data
 availability</a></li>
+<li><a href="#appendix-e-catalogue-of-free-one-off-words"
+id="toc-appendix-e-catalogue-of-free-one-off-words">Appendix E:
+catalogue of free one-off words</a></li>
 </ul>
 </nav>
 <h1 class="unnumbered" id="abstract">Abstract</h1>
-<p>We ran 248 tests on Beinecke MS 408, the Voynich Manuscript. Most of
+<p>We ran 249 tests on Beinecke MS 408, the Voynich Manuscript. Most of
 them test hypotheses that other researchers proposed, and all of them
 depend on transliterations, images, code and corpora those researchers
 made public. Every test was compared against shuffled text, generated
-text or both; 119 were pre-registered before the data were examined. A
+text or both; 120 were pre-registered before the data were examined. A
 reading would have counted as a translation only if it held on pages it
-was not built from and beat those controls. None did.</p>
+was not built from and beat those controls. None did, and we claim no
+translation.</p>
 <p>The positive findings mostly confirm earlier work. As Layfield and
 Davis reported, pages on the same bifolium share vocabulary far beyond
 chance, and the four pages of a sheet appear to have been written in
@@ -104,18 +116,25 @@ information (0.07 against 0.19–0.86 bits) fall outside six comparison
 languages. Simple and homophonic substitution, several published
 decipherments, word-level codes and crib attacks all failed, although
 each decoder recovered planted signals at 92–99%. Two structures stand
-out instead: strong line- and paragraph-position rules, and a coupling
-between a word’s last glyph and the next word’s first glyph (0.16–0.19
-bits) that matches natural languages and exceeds every generator and
-cipher tested.</p>
-<p>Building on Timm’s self-citation model, a frozen copy-and-vary
-generator (S6-Z1b) reproduces 20.8 of 24 statistics on held-out sheets,
-against 11.4 for Timm’s generator and 11.9 for shuffled text. It still
-makes rare words the wrong way. A trained glyph segmenter (held-out IoU
-0.93–0.98) shows that glyphs at line edges have a different pen form
-from the same glyphs mid-line (AUC 0.641 for line-initial, 0.587 for
-line-final, p = 0.005). That last result is new and needs a control-hand
-test before it can be read with confidence.</p>
+out instead: strong line- and paragraph-position rules in the
+transliterated text, and a coupling between a word’s last glyph and the
+next word’s first glyph (0.16–0.19 bits) that matches natural languages
+and exceeds every generator and cipher tested.</p>
+<p>The statistics are well explained by a scribe copying and varying
+earlier words, with habits tied to line position. This extends the
+self-citation model of Timm and Schinner (2020). Our version of it, a
+frozen copy-and-vary generator (S6-Z1b), reproduces 20.8 of 24
+statistics on held-out sheets. That figure is not a comparison of merit
+with Timm’s generator: we chose the 24 statistics and tuned our
+generator towards them with far more settings than his model has. The
+generator still makes rare one-off words the wrong way. A glyph-level
+test of pen form at line edges, first reported as a possible
+Voynich-specific signal, turned out to be ordinary: a dated Latin hand
+(BSB Clm 5905, 1479) shows the line-initial effect at least as strongly
+(AUC 0.68 against 0.64). We sort the findings into rules we can show,
+choices that look free within those rules, and patterns that are
+structured but unexplained, and we note that none of them requires or
+rules out meaning.</p>
 <h1 class="unnumbered" id="plain-language-summary">Plain-language
 summary</h1>
 <p>The Voynich Manuscript is a fifteenth-century book in an unknown
@@ -168,62 +187,76 @@ any generator or cipher we tried. These patterns survive in three
 independent transcriptions and in our own machine reading of the page
 images.</p>
 <p><strong>A machine that writes Voynich-like text.</strong> Torsten
-Timm proposed that the scribe wrote by copying earlier words and
-changing them slightly. We built on his idea and tuned a copy-and-vary
-program until it matched the manuscript on 24 measures. On pages it was
-not tuned on, it matches about 21 of the 24 (Figure 3), which is much
-closer than Timm’s original program or shuffled text. It still gets one
-thing wrong: the manuscript is full of long words that appear only once,
-and our program cannot make them the way the scribe did.</p>
+Timm and Andreas Schinner proposed that the scribe wrote by copying
+earlier words and changing them slightly. We built on their idea, added
+rules for line position and other habits, and tuned the result until it
+matched the manuscript on 24 measures. On pages it was not tuned on, it
+matches about 21 of the 24 (Figure 3). That number should not be read as
+“better than Timm”: we picked the 24 measures ourselves and gave our
+program many more settings to tune towards them, while Timm’s program
+has only a few. What the test shows is that his basic idea still works
+when it is pushed much harder. Our program still gets one thing wrong:
+the manuscript is full of long words that appear only once, and our
+program cannot make them the way the scribe did.</p>
 <figure>
 <img src="../figures/fig3_generator_scores.png" style="width:88.0%"
-alt="Figure 3. On held-out sheets, the frozen copy-and-vary generator S6-Z1b falls in the Voynich range on 20.8 of 24 statistics, against 11.4 for Timm’s generator and 11.9 for shuffled Voynich text. Each dot is one held-out split; bars are means." />
+alt="Figure 3. On held-out sheets, the frozen copy-and-vary generator S6-Z1b falls in the Voynich range on 20.8 of 24 statistics. Timm’s generator (11.4) and shuffled Voynich text (11.9) are shown for reference only: the 24 statistics are our choice, S6-Z1b was tuned towards them with many more settings, and Timm’s generator was not. Each dot is one held-out split; bars are means." />
 <figcaption aria-hidden="true">Figure 3. On held-out sheets, the frozen
 copy-and-vary generator S6-Z1b falls in the Voynich range on 20.8 of 24
-statistics, against 11.4 for Timm’s generator and 11.9 for shuffled
-Voynich text. Each dot is one held-out split; bars are
-means.</figcaption>
+statistics. Timm’s generator (11.4) and shuffled Voynich text (11.9) are
+shown for reference only: the 24 statistics are our choice, S6-Z1b was
+tuned towards them with many more settings, and Timm’s generator was
+not. Each dot is one held-out split; bars are means.</figcaption>
 </figure>
-<p><strong>The pen at the edge of the line.</strong> Finally, we trained
-a program to outline individual glyphs in the page images. Glyphs at the
-start and end of lines turn out to be drawn differently from the same
-glyphs mid-line, even after their size is removed from the comparison.
-This supports the idea that the scribes treated line edges as special
-while writing, not only in what they wrote. It is the newest result
-here, and it still needs one more control (Section 9).</p>
+<p><strong>The pen at the edge of the line.</strong> We trained a
+program to outline individual glyphs in the page images. Glyphs at the
+start of lines are drawn a little differently from the same glyphs
+mid-line. We then ran the same test on a Latin herbal manuscript copied
+in 1479 by a known scribe, and found the same thing, slightly more
+strongly: scribes of the period often enlarged or flourished the first
+letter of a line. So this is ordinary scribal behaviour, not something
+special about the Voynich script.</p>
 <p><strong>What this adds up to.</strong> The manuscript looks most like
 text produced by a rule-governed writing procedure: copying and varying
 words, with special rules at line and paragraph edges. That is close to
-what Timm and others have argued. We could not show that it hides a
-language, and we could not show that it does not. The two structures
-above, and the way the scribes made one-off words, are where we think
-the next work should go.</p>
+what Timm and Schinner and others have argued. We could not show that it
+hides a language, and we could not show that it does not. Section 7
+sorts what we found into three groups: rules we can demonstrate, choices
+that look free within those rules, and patterns that are clearly
+structured but that no model we built explains.</p>
 <h1 class="newpage" data-number="1" id="introduction"><span
 class="header-section-number">1</span> Introduction</h1>
 <p>Beinecke MS 408 has drawn more than a century of study. Currier
 separated two “languages” (A and B) in 1976; Davis identified five
 scribal hands; Zandbergen and Landini built the transliteration standard
-and the reference site that most current work depends on; Timm proposed
-and implemented a self-citation model of how the text was produced; and
-Layfield and Davis (2026) argued from same-sheet vocabulary that many
-bifolia were written as loose singulions and later nested in a different
-order. Timm reviewed that proposal and raised the question of whether
-the text can carry order information at all.</p>
+and the reference site that most current work depends on; Timm and
+Schinner proposed and implemented a self-citation model of how the text
+was produced; and Layfield and Davis (2026) argued from same-sheet
+vocabulary that many bifolia were written as loose singulions and later
+nested in a different order. Timm reviewed that proposal and raised the
+question of whether the text can carry order information at all.</p>
 <p>This paper reports a series of tests of those ideas and of others:
 published decipherments by Bax (2014) and Cheshire (2019), Greshko’s
-Naibbe cipher, Parisel’s cho/che switch, Stolfi’s word grammar and
-singulion model for quire 13, and Rugg’s table-and-grille method, which
-we used as a control. We did not set out to replace any of these
-proposals. Where our version of a test failed, the failure belongs to
-our version: our fitting, our transliteration choices and our controls.
-The originals may survive a better test.</p>
+Naibbe cipher (2025), Parisel’s cho/che switch (2026), Stolfi’s word
+grammar and singulion model for quire 13, and Rugg’s table-and-grille
+method (2004), which we used as a control. We did not set out to replace
+any of these proposals. Where our version of a test failed, the failure
+belongs to our version: our fitting, our transliteration choices and our
+controls. The originals may survive a better test.</p>
 <p>Three rules applied throughout. First, every claim was compared
 against shuffled text, generated text or both. Second, tests that could
-be pre-registered were (119 of 248), with the decision rule written
+be pre-registered were (120 of 249), with the decision rule written
 before the data were examined. Third, a decipherment counted only if it
 held on held-out pages it was not built from and beat generated-text and
 shuffled controls. Negative results are reported as plainly as positive
 ones; the full register is in Appendix A.</p>
+<p><strong>Changes in version 1.1.</strong> The control-hand test (P3-e)
+is added, and the line-edge pen-form result (P3-c) is now reported as
+ordinary scribal behaviour rather than a new Voynich observation
+(Section 5.1). The comparison with Timm’s generator is reframed (Section
+6.1). Section 7 sorts the findings into three groups. Appendix E
+summarises the catalogue of one-off words. References follow the Unified
+Style Sheet for Linguistics.</p>
 <h1 data-number="2" id="data"><span
 class="header-section-number">2</span> Data</h1>
 <p><strong>Transliterations.</strong> We used four IVTFF
@@ -234,25 +267,29 @@ header. ZL3b-n was the default. Headline structural results were
 repeated on IT2a-n and RF1b-e.</p>
 <p><strong>Machine transliteration.</strong> To check that results do
 not depend on transcriber choices, we trained a Kraken line reader
-(Kiessling and contributors) from scratch on page images and IT labels.
-Three seeds run as an ensemble reach a page character error rate of
-0.111 [0.082, 0.143] against ZL on held-out pages, and 0.061 [0.048,
-0.079] after a geometry-only change to row grouping. Line CER on 649
-ZL-paired test lines is 0.073, close to Lemur Labs’ reported 7.0%; both
-figures are optimistic because ZL helped choose the lines.</p>
+(Kiessling 2019) from scratch on page images and IT labels. Three seeds
+run as an ensemble reach a page character error rate of 0.111 [0.082,
+0.143] against ZL on held-out pages, and 0.061 [0.048, 0.079] after a
+geometry-only change to row grouping. Line CER on 649 ZL-paired test
+lines is 0.073, close to Lemur Labs’ reported 7.0%; both figures are
+optimistic because ZL helped choose the lines.</p>
 <p><strong>Images and glyph segmentation.</strong> Page images and
-multispectral data are from the Beinecke Library. We trained a U-Net
-glyph segmenter on rendered scenes built from 37,086 clean exemplars,
-cross-fitted over two sheet folds. Held-out IoU was 0.93–0.98 for k, t
-and n, against 0.81–0.88 for a threshold baseline. Letter boxes came
-from the word boxes of Rozanova and Temerev (2026, via voynichese.com)
-and Ward’s <code>voynich-letters</code> (2026).</p>
+multispectral data are from the Beinecke Rare Book and Manuscript
+Library, Yale University. We trained a U-Net glyph segmenter on rendered
+scenes built from 37,086 clean exemplars, cross-fitted over two sheet
+folds. Held-out IoU was 0.93–0.98 for k, t and n, against 0.81–0.88 for
+a threshold baseline. Letter boxes came from the voynichese.com word
+boxes archived by Rozanova and Temerev and from Ward’s
+<code>voynich-letters</code> (2026). The control hand for the line-edge
+test is Munich, Bayerische Staatsbibliothek, Clm 5905, from its IIIF
+images.</p>
 <p><strong>Comparison corpora.</strong> These came from Gaskell and
-Bowern (2022, gibberish and meaningful texts in 55 languages),
-Montemurro and Zanette (2013), RIDGES Herbology v9.0, ReM, HTRomance,
-and three Zenodo HTR ground-truth sets (Klosterneuburg, Inzigkofen, ENHG
-1480–85), plus editions of herbals and medical texts listed in Appendix
-D.</p>
+Bowern (2022, gibberish and meaningful texts), Montemurro and Zanette
+(2013), RIDGES Herbology v9.0 (Odebrecht et al. 2017), ReM (Klein et
+al. 2016), HTRomance, and three Zenodo HTR ground-truth sets
+(Klosterneuburg, Inzigkofen, Early New High German charters 1480–85),
+plus editions of herbals and medical texts listed in the references and
+in the corpus READMEs.</p>
 <h1 data-number="3" id="part-i-page-order"><span
 class="header-section-number">3</span> Part I: page order</h1>
 <h2 data-number="3.1" id="same-sheet-units"><span
@@ -291,22 +328,23 @@ singulion hypothesis itself. The question has to be settled by physical
 evidence.</p>
 <h2 data-number="3.3" id="physical-evidence"><span
 class="header-section-number">3.3</span> Physical evidence</h2>
-<p>Following Pelling (2006) and using Dulov’s wormhole survey and the
-McCrone ink and pigment table, we scored water stains, ink offsets,
-gutter paint and wormholes for every alternative nesting. The current
-nesting fits best in six of nine quires. In quire 20 the stain pattern
-runs continuously across sheets in their present order (Figure 4), which
-loose singulions could not produce. Skin-side alternation was random
-with respect to binding (Gregory’s rule not supported). Together these
-suggest that the current nesting is old, whatever the writing order
-was.</p>
+<p>Following Pelling (2006, 2022) and using Dulov’s wormhole survey
+(2022) and the McCrone ink and pigment table (McCrone Associates 2009),
+we scored water stains, ink offsets, gutter paint and wormholes for
+every alternative nesting. The current nesting fits best in six of nine
+quires. In quire 20 the stain pattern runs continuously across sheets in
+their present order (Figure 4), which loose singulions could not
+produce. Skin-side alternation was random with respect to binding
+(Gregory’s rule not supported). Together these suggest that the current
+nesting is old, whatever the writing order was.</p>
 <figure>
-<img src="../../figures/q20_stain_maps_f103-f108.png"
+<img src="../figures_extra/q20_stain_maps_f103-f108.png"
 style="width:90.0%"
-alt="Figure 4. Stain maps for quire 20 (f103–f108 shown). Stain edges line up across sheets in their present nesting." />
+alt="Figure 4. Stain maps for quire 20 (f103–f108 shown). Stain edges line up across sheets in their present nesting. Images: Beinecke Rare Book and Manuscript Library, Yale University, MS 408." />
 <figcaption aria-hidden="true">Figure 4. Stain maps for quire 20
 (f103–f108 shown). Stain edges line up across sheets in their present
-nesting.</figcaption>
+nesting. Images: Beinecke Rare Book and Manuscript Library, Yale
+University, MS 408.</figcaption>
 </figure>
 <h1 data-number="4" id="part-ii-what-kind-of-text"><span
 class="header-section-number">4</span> Part II: what kind of text</h1>
@@ -328,14 +366,15 @@ all five languages we tried. Cheshire’s 2019 reading fails even with its
 most favourable settings: fitted Timm text does as well, and its one
 Latin pass does not hold across seeds. Bax-style plant-name keys, scored
 on herbal pages away from his source leaves with Arabic names verified
-in Leclerc’s Ibn al-Baytar and Greek names from Wellmann’s Dioscorides,
-rank true names no better than shuffled names (p 0.48–0.63). A later
-language-model decoder fails in Latin, Middle High German and Occitan,
-with restart agreement 0.11–0.19 against 0.54–0.92 in calibration, and
-Timm, shuffled and gibberish controls match or beat the manuscript. Its
-Italian version passes calibration (S16g), and the manuscript in Italian
-also fails. These are tests of our implementations of the authors’
-readings, not of every refinement they might make.</p>
+in Leclerc’s Ibn al-Baytar (1877–1883) and Greek names from Wellmann’s
+Dioscorides (1906–1914), rank true names no better than shuffled names
+(p 0.48–0.63). A later language-model decoder fails in Latin, Middle
+High German and Occitan, with restart agreement 0.11–0.19 against
+0.54–0.92 in calibration, and Timm, shuffled and gibberish controls
+match or beat the manuscript. Its Italian version passes calibration
+(S16g), and the manuscript in Italian also fails. These are tests of our
+implementations of the authors’ readings, not of every refinement they
+might make.</p>
 <p>Word-level codes, glossary-based codes, Tironian-style abbreviation,
 ingredient notation and the Naibbe cipher (with Greshko’s own code) were
 fitted to the manuscript and scored on held-out statistics. All failed;
@@ -351,9 +390,13 @@ with a gallows glyph 80–86% of the time across three transliterations;
 other lines start with y, s or d 42–48% of the time, against 12–13% for
 the same glyphs at mid-line word starts. Line ends carry their own
 marking. Compared with 13 real scribal manuscripts, the manuscript’s
-line-end effect (E2 +0.083) exceeds all of them, and the machine
-transliteration gives the same value (+0.082), so the effect is in the
-writing, not in transcription choices.</p>
+line-end effect in the transliterated text (E2 +0.083) exceeds all of
+them, and the machine transliteration gives the same value (+0.082), so
+the effect is in the writing, not in transcription choices. These are
+statistics of which glyphs appear where. The separate question of
+whether the same glyph is drawn differently at a line edge is taken up
+in Section 5.1, where a control hand shows that this kind of letter-form
+marking is ordinary.</p>
 <figure>
 <img src="../figures/fig5_line_starts.png" style="width:85.0%"
 alt="Figure 5. Line and paragraph openings across three transliterations." />
@@ -384,74 +427,60 @@ strong ending agreement and word order, which the manuscript lacks
 (ending agreement 0.0075 against 0.05–0.09). No language, cipher or
 generator we tested combines strong boundary coupling with near-zero
 agreement.</p>
-<h1 data-number="5" id="part-iii-a-copy-and-vary-model"><span
-class="header-section-number">5</span> Part III: a copy-and-vary
-model</h1>
-<h2 data-number="5.1" id="the-s6-generator"><span
-class="header-section-number">5.1</span> The S6 generator</h2>
-<p>Timm’s self-citation model proposes that each word is a modified copy
-of an earlier one. We kept that core and added, in stages, line- and
-paragraph-position rules, per-language parameters and a boundary rule.
-The target was a 24-statistic profile, and each stage was scored on
-held-out sheet halves under six split directions. The final model,
-S6-Z1b, falls in the Voynich band on 20.8 of 24 statistics on average,
-and passes in 5 of 6 directions; Timm’s generator scores 11.4 and
-shuffled Voynich 11.9 (Figure 3). A later variant (S6-Z6) did not
-improve the held-out score and was not kept. The generator was then
-frozen. The gain over Timm’s generator comes from additions to his
-model, not from a different idea.</p>
-<h2 data-number="5.2" id="what-the-generator-misses"><span
-class="header-section-number">5.2</span> What the generator misses</h2>
-<p>The generator still misses Zipf slope in 13 of 30 runs and three
-other statistics in 9–11 runs. Its biggest failure is one-off words
-(Figure 7). In the manuscript 13.8% of words occur once, and only 8.3%
-of those are one edit from a word in the previous 40. The generator
-makes fewer one-offs (7–9%) and builds 20–31% of them by local edits.
-Adding one-off share to the fitting objective did not fix this: the fit
-still prefers local recycling. Long real one-offs keep line-edge and
-glyph-sequence habits that free recombination breaks. One-offs do not
-cluster by subject the way topic nouns do in German herbals. We list
-this as an unmodelled process.</p>
-<figure>
-<img src="../figures/fig7_oneoffs.png" style="width:85.0%"
-alt="Figure 7. One-off words: share and local-edit rate in the manuscript and two generator versions. S6-Z1b values are the midpoints of its ranges (0.07–0.09 and 0.20–0.31)." />
-<figcaption aria-hidden="true">Figure 7. One-off words: share and
-local-edit rate in the manuscript and two generator versions. S6-Z1b
-values are the midpoints of its ranges (0.07–0.09 and
-0.20–0.31).</figcaption>
-</figure>
-<h1 data-number="6" id="robustness-and-image-tests"><span
-class="header-section-number">6</span> Robustness and image tests</h1>
+<h1 data-number="5" id="robustness-and-image-tests"><span
+class="header-section-number">5</span> Robustness and image tests</h1>
 <p>The machine transliteration reproduces the key findings: boundary
 coupling, line-start classes, line-end marking and the generator
 ranking. Three human transliterations agree on all main structural
 results.</p>
-<h2 data-number="6.1" id="line-edge-pen-form-p3-c"><span
-class="header-section-number">6.1</span> Line-edge pen form (P3-c)</h2>
+<h2 data-number="5.1"
+id="line-edge-pen-form-p3-c-and-the-control-hand-p3-e"><span
+class="header-section-number">5.1</span> Line-edge pen form (P3-c) and
+the control hand (P3-e)</h2>
 <p>Using the segmenter, we measured pen-form features of glyph masks
 with extent and size removed, and compared line-edge glyphs with the
-same glyphs mid-line under placement matching. Held-out AUC was 0.641
-for line-initial against mid-line and 0.587 for line-final (both p =
-0.005). Shape-only (HOG) features give 0.633 and 0.586, so the signal is
-in pen form, not mask extent. Placebo splits and a box-only control sit
-at chance. The strongest glyphs are line-initial t (0.90) and sh (0.72)
-and line-final n (0.66). The line-initial effect appears in every scribe
-and section with enough glyphs (Scribe 1 0.608, Scribe 2 0.604, Scribe 3
-0.564; Biological 0.586, Herbal 0.601, Stars 0.604; p 0.01–0.06). The
-line-final effect is uneven: present for Scribe 3 (0.642) and Stars
-(0.622), weak or absent elsewhere (Herbal 0.531). No subset reverses.
-Figure 8 summarises the AUCs; mean masks are shown in Appendix C as an
-illustration only, because band-fit error at line ends partly confounds
-them.</p>
+same glyphs mid-line under placement matching. In the Voynich, held-out
+AUC was 0.641 for line-initial against mid-line and 0.587 for line-final
+(both p = 0.005). Shape-only (HOG) features give 0.633 and 0.586.
+Placebo splits and a box-only control sit at chance. The line-initial
+effect appears in every scribe and section with enough glyphs
+(0.56–0.61); the line-final effect is uneven.</p>
+<p>Version 1.0 of this paper called that a new positive result that
+needed a control hand. The pre-registered control (P3-e) is now done. We
+ran the same pipeline on BSB Clm 5905, a Latin herbal (Macer’s verse and
+remedy prose) written in gothic cursive at Ebersberg in 1479 by Vitus
+Auslasser: 336 text pages, 6,047 lines and 157,000 letters, with the
+segmenter retrained on this hand’s own clean exemplars (rendered
+validation IoU 0.94–0.98). The control hand shows a line-initial effect
+of 0.681 (HOG-only 0.680, p = 0.005; placebo 0.522), above the Voynich
+value (Figure 8). By the pre-registered rule this makes the Voynich
+line-initial effect <strong>ordinary scribal behaviour</strong>. By eye,
+the control’s line-initial letters are often enlarged or near-capital
+forms (long-stemmed l, h, f and p), which is the same kind of habit as
+the flourished line-initial y and gallows in the Voynich. The line-final
+effect is weak in both hands (control 0.556, Voynich 0.587). The Voynich
+value is formally the stronger one, but the gap in shape-only AUC is
+0.03, below the 0.07 margin set in advance, so we do not count it as a
+finding.</p>
 <figure>
 <img src="../figures/fig8_line_edge_penform.png" style="width:85.0%"
-alt="Figure 8. Held-out AUC for line-edge against mid-line glyph pen form, with shape-only features and controls." />
+alt="Figure 8. Held-out AUC for line-edge against mid-line glyph pen form, Voynich (P3-c) and a dated Latin control hand (P3-e, BSB Clm 5905, 1479). Placebo and box controls are at or below chance in both. Derived from images of Beinecke MS 408 (Beinecke Rare Book and Manuscript Library, Yale University) and of Clm 5905 (Bayerische Staatsbibliothek, Munich)." />
 <figcaption aria-hidden="true">Figure 8. Held-out AUC for line-edge
-against mid-line glyph pen form, with shape-only features and
-controls.</figcaption>
+against mid-line glyph pen form, Voynich (P3-c) and a dated Latin
+control hand (P3-e, BSB Clm 5905, 1479). Placebo and box controls are at
+or below chance in both. Derived from images of Beinecke MS 408
+(Beinecke Rare Book and Manuscript Library, Yale University) and of Clm
+5905 (Bayerische Staatsbibliothek, Munich).</figcaption>
 </figure>
-<h2 data-number="6.2" id="tests-that-could-not-be-done"><span
-class="header-section-number">6.2</span> Tests that could not be
+<p>We therefore withdraw the claim that the line-edge pen-form effect is
+a new Voynich-specific observation. It is reported here as a negative
+result: the Voynich scribes marked line starts in the way an ordinary
+fifteenth-century scribe did. One control manuscript, in cursive and
+with verse sections, is a narrow base. A prose-only textualis hand would
+be a useful second control, but we do not expect it to change the
+conclusion for the line-initial arm.</p>
+<h2 data-number="5.2" id="tests-that-could-not-be-done"><span
+class="header-section-number">5.2</span> Tests that could not be
 done</h2>
 <p>Several image tests failed their own calibration gates and are
 reported as not testable. They include UV detection of erasures, Davis’s
@@ -460,41 +489,257 @@ ink-session breaks on f105r (the method finds a known break on f115r at
 p = 0.001, but f105r only fades), and a suspected first-glyph column on
 f88v. A literature sweep found about 16 published scribal corrections,
 not the 40 sometimes cited.</p>
-<h1 data-number="7" id="discussion"><span
-class="header-section-number">7</span> Discussion</h1>
+<h1 data-number="6" id="part-iii-a-copy-and-vary-model"><span
+class="header-section-number">6</span> Part III: a copy-and-vary
+model</h1>
+<h2 data-number="6.1"
+id="the-s6-generator-and-what-the-comparison-with-timms-generator-does-and-does-not-show"><span
+class="header-section-number">6.1</span> The S6 generator, and what the
+comparison with Timm’s generator does and does not show</h2>
+<p>Timm and Schinner’s self-citation model proposes that each word is a
+modified copy of an earlier one. We kept that core and added, in stages,
+line- and paragraph-position rules, per-language parameters and a
+boundary rule. The target was a 24-statistic profile, and each stage was
+scored on held-out sheet halves under six split directions. The final
+model, S6-Z1b, falls in the Voynich band on 20.8 of 24 statistics on
+average, and passes in 5 of 6 directions (Figure 3). A later variant
+(S6-Z6) did not improve the held-out score and was not kept. The
+generator was then frozen.</p>
+<p>On the same held-out sheets Timm’s generator scores 11.4 and shuffled
+Voynich text 11.9. <strong>This does not show that our generator is
+better than Timm’s, and it should not be cited as showing that.</strong>
+We chose the 24 statistics. We then tuned S6-Z1b towards them over many
+rounds, with far more adjustable settings than Timm and Schinner’s model
+has. Timm’s generator was run as published with its own settings and was
+never tuned to our profile. A model fitted to a scorecard will do well
+on that scorecard. Held-out sheets were needed because our
+many-parameter model could overfit, not because anything was wrong with
+Timm’s evaluation: a model with few parameters is reasonably judged on
+the whole text, as Timm and Schinner did. What the comparison does show
+is narrower. The copy-and-vary idea at the centre of their model can be
+extended, rule by rule, to cover line position, paragraph openings and
+language differences without breaking, and it then reproduces most of
+what we measured. We see this work as extending and stress-testing their
+idea, not replacing it.</p>
+<h2 data-number="6.2" id="what-the-generator-misses"><span
+class="header-section-number">6.2</span> What the generator misses</h2>
+<p>The generator still misses Zipf slope in 13 of 30 runs and three
+other statistics in 9–11 runs. Its biggest failure is one-off words
+(Figure 7). In the manuscript 13.8% of words occur once, and only 8.3%
+of those are one edit from a word in the previous 40. The generator
+makes fewer one-offs (7–9%) and builds 20–31% of them by local edits.
+Adding one-off share to the fitting objective did not fix this: the fit
+still prefers local recycling. Long real one-offs keep line-edge and
+glyph-sequence habits that free recombination breaks. One-offs do not
+cluster by subject the way topic nouns do in German herbals. Appendix E
+summarises a catalogue of the 1,328 most isolated one-offs.</p>
+<figure>
+<img src="../figures/fig7_oneoffs.png" style="width:85.0%"
+alt="Figure 7. One-off words: share and local-edit rate in the manuscript and two generator versions. S6-Z1b values are the midpoints of its ranges (0.07–0.09 and 0.20–0.31)." />
+<figcaption aria-hidden="true">Figure 7. One-off words: share and
+local-edit rate in the manuscript and two generator versions. S6-Z1b
+values are the midpoints of its ranges (0.07–0.09 and
+0.20–0.31).</figcaption>
+</figure>
+<h1 data-number="7"
+id="what-the-procedure-leaves-over-three-kinds-of-finding"><span
+class="header-section-number">7</span> What the procedure leaves over:
+three kinds of finding</h1>
+<p>The tests above can be sorted into three groups. The sorting is ours
+and is meant to help the next reader decide what to work on.
+<strong>None of the three groups requires meaning, and none rules it
+out.</strong> A procedure with rules, free choices and some unexplained
+habits could carry a message or could carry none; our tests of meaning
+(decoders, cribs, choice-channel readings) found nothing, but those
+tests are bounded as Section 8 explains.</p>
+<h2 data-number="7.1" id="rules-we-can-show"><span
+class="header-section-number">7.1</span> Rules we can show</h2>
+<p>These are regularities that beat shuffled text by a wide margin, hold
+in several transliterations and, where tested, in the machine
+reading.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Rule</th>
+<th>Evidence</th>
+<th>Controls</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Copy and vary: words are modified copies of recent words</td>
+<td>A frozen copy-and-vary generator reproduces 20.8 of 24 statistics on
+held-out sheets</td>
+<td>Held-out sheet halves, six split directions; shuffled Voynich
+11.9</td>
+</tr>
+<tr class="even">
+<td>Paragraph openings</td>
+<td>Gallows glyph first in 80–86% of paragraphs</td>
+<td>Three transliterations; mid-line rates</td>
+</tr>
+<tr class="odd">
+<td>Line openings</td>
+<td>y, s or d start 42–48% of non-paragraph lines, against 12–13%
+mid-line</td>
+<td>Three transliterations; machine reading; shuffles</td>
+</tr>
+<tr class="even">
+<td>Line endings</td>
+<td>Line-end effect E2 +0.083 in the text, above 13 real scribal
+manuscripts</td>
+<td>Machine reading +0.082; real-manuscript comparison</td>
+</tr>
+<tr class="odd">
+<td>Same-sheet vocabulary</td>
+<td>Confoliate pairs z +6.2 to +7.4; within-sheet order Xr→Xv→Yr→Yv (p
+0.0008)</td>
+<td>Null stratified by scribe, language and illustration</td>
+</tr>
+<tr class="even">
+<td>Section-level ending order</td>
+<td>Adjacent ending-pair order is consistent within a section
+(split-half ρ 0.41–0.57) but differs between sections of one hand
+(herbal B vs balneological ρ 0.00)</td>
+<td>Shuffles; size-matched groups; stock bigrams removed</td>
+</tr>
+</tbody>
+</table>
+<p>Line-edge letter forms are not in this table. They exist in the
+Voynich, but a dated Latin control hand shows them as strongly (Section
+5.1), so they tell us about scribal practice in general, not about this
+text.</p>
+<h2 data-number="7.2"
+id="choices-that-look-free-within-those-rules"><span
+class="header-section-number">7.2</span> Choices that look free within
+those rules</h2>
+<p>These are the parts of the procedure where we could find no structure
+beyond what random choice gives.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Choice</th>
+<th>Evidence</th>
+<th>Controls</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Which earlier word is copied, and what is changed</td>
+<td>The 26 copy-choice symbols, mapped to letters on fit pages and
+scored on test pages, decode no better than shuffled in Latin, Middle
+High German, Italian or Occitan, and no better than Timm’s random
+choices</td>
+<td>Planted-message calibration passes clearly (homophonic Latin);
+shuffled choices</td>
+</tr>
+<tr class="even">
+<td>Sheet order inside quires</td>
+<td>No quire beats a shuffled-page null (p 0.55–0.997)</td>
+<td>Calibration shows the method cannot see order at quire scale, so
+“free” here means “not visible”, not “absent”</td>
+</tr>
+<tr class="odd">
+<td>Glyph variants that EVA merges</td>
+<td>Variants in Claston’s transliteration depend on line and paragraph
+position, not on any hidden choice</td>
+<td>Labels shuffled within pages</td>
+</tr>
+</tbody>
+</table>
+<h2 data-number="7.3"
+id="patterns-that-are-structured-but-unexplained"><span
+class="header-section-number">7.3</span> Patterns that are structured
+but unexplained</h2>
+<p>These beat their controls but no model we built reproduces them.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Pattern</th>
+<th>Evidence</th>
+<th>Controls</th>
+<th>Why it is unexplained</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Long one-off words</td>
+<td>1,328 free one-offs (24% of one-offs) have fewer doubled e/i (0.30
+against 0.44 in generator one-offs), more stacked gallows (0.16 against
+0.11) and 133 start–ending pairs not seen in recurring words; enriched
+in labels (p 0.0015)</td>
+<td>S6-Z generator one-offs; unit-shuffled one-offs; shuffled placement;
+German herbal one-offs (Appendix E)</td>
+<td>The generator builds rare words by local edits; the scribe did
+not</td>
+</tr>
+<tr class="even">
+<td>Neighbouring-word boundary link</td>
+<td>Last glyph predicts next first glyph by 0.16–0.19 bits, with
+near-zero ending agreement (0.0075)</td>
+<td>Languages, sandhi languages, Timm, Naibbe, gibberish, respaced
+text</td>
+<td>Every language with this strength also shows ending agreement; every
+generator is far weaker</td>
+</tr>
+<tr class="odd">
+<td>Two-back onset alternation</td>
+<td>A word’s onset is linked to the onset two words later (+0.011 bits,
+p &lt; 0.0005), in Currier B only</td>
+<td>2,000 shuffles; Timm ≤ 0.005; gibberish</td>
+<td>Not built into any generator; replicates in three
+transliterations</td>
+</tr>
+</tbody>
+</table>
+<p>Either the procedure had richer rules than ours, or the rules sit on
+top of something else, a language or a stock of names, that the
+procedure conceals. The data we have do not decide between these.</p>
+<h1 data-number="8" id="discussion"><span
+class="header-section-number">8</span> Discussion</h1>
 <p>Much of what we found confirms earlier work. Layfield and Davis’s
 same-sheet signal is strong, and the within-sheet writing order fits
-their singulion picture. Timm’s self-citation idea, extended with
-position rules, gives the best generative description of the text that
-we could build, and it beats shuffled text and his own generator by a
-wide margin on held-out sheets. Parisel’s per-folio cho/che switch
-replicates in three transliterations. Currier’s languages and Davis’s
-hands remain useful structure: the generator needs per-language
-parameters, and the line-initial pen effect holds across hands.</p>
+their singulion picture. Timm and Schinner’s self-citation idea,
+extended with position rules, gives the best generative description of
+the text that we could build. That is a statement about how far their
+idea can be pushed, not a ranking of our generator against theirs
+(Section 6.1). Parisel’s per-folio cho/che switch replicates in three
+transliterations. Currier’s languages and Davis’s hands remain useful
+structure: the generator needs per-language parameters, and the
+line-start rules differ by section.</p>
 <p>The negative results are bounded. A failed sheet-order search on
 quire-sized text is uninformative by our own calibration. A failed
 decipherment tests a particular decoder against a particular language
 and transliteration. The decoders were calibrated on planted signals,
 and the text was compared with generated controls, so the failures are
-not blind, but they do not rule out a system we did not model.</p>
-<p>Two features remain unexplained by any model we tested: boundary
-coupling at natural-language strength with near-zero ending agreement,
-and long one-off words that keep the line habits of common words while
-having new onset–ending pairs. Either could come from a procedure with
-richer rules than ours, or from an underlying language that the
-procedure conceals. The line-edge pen-form result suggests that position
-rules were part of the act of writing, which fits a procedure applied by
-hand.</p>
-<h1 data-number="8" id="limitations"><span
-class="header-section-number">8</span> Limitations</h1>
+not blind, but they do not rule out a system we did not model. The
+line-edge pen-form test is the clearest example of why controls matter:
+within the Voynich it passed every internal check, and only a second
+manuscript showed that it was ordinary.</p>
+<h1 data-number="9" id="limitations"><span
+class="header-section-number">9</span> Limitations</h1>
 <ul>
-<li><strong>P3-c has no control hand.</strong> The line-edge pen-form
-effect has not been measured on a real manuscript written by a known
-scribe with the same segmenter and features. Without that, we cannot
-exclude a general scribal habit (for example, pen pressure at line
-starts) that any fifteenth-century hand would show.</li>
 <li>The glyph segmenter was validated by eye by the same session that
 trained it, not by independent annotators.</li>
+<li>The control-hand test uses one manuscript, in cursive, with verse
+sections. Its letter cuts are coarser than the Voynich letter boxes,
+which if anything biases it towards finding no effect.</li>
 <li>Most tests use ZL3b-n; structural results were repeated on two other
 transliterations and the machine reading, but many secondary tests were
 not.</li>
@@ -504,25 +749,30 @@ manuscripts.</li>
 <li>Decipherment tests cover the languages, cipher families and readings
 we implemented. Our versions of published readings may differ from the
 authors’ intent.</li>
-<li>The 24-statistic profile was chosen by us. A generator that matches
-it may still differ from the manuscript in ways the profile does not
-measure, as the one-off result shows.</li>
-<li>129 of 248 tests were exploratory rather than pre-registered and
+<li>The 24-statistic profile was chosen by us, and our generator was
+tuned towards it. A generator that matches it may still differ from the
+manuscript in ways the profile does not measure, as the one-off result
+shows, and the profile is not a fair basis for ranking other
+generators.</li>
+<li>129 of 249 tests were exploratory rather than pre-registered and
 should be read as such.</li>
-<li>We did not reach Glen Claston’s hair/flesh list or Zyats’s
-conservation notes, which may bear on the physical analysis.</li>
+<li>We did not reach Glen Claston’s hair/flesh list or the Beinecke
+conservation notes (Zyats 2016), which may bear on the physical
+analysis.</li>
 </ul>
-<h1 data-number="9" id="future-work"><span
-class="header-section-number">9</span> Future work</h1>
+<h1 data-number="10" id="future-work"><span
+class="header-section-number">10</span> Future work</h1>
 <ol type="1">
-<li><strong>A control-hand test for P3-c.</strong> Run the segmenter and
-pen-form features on one or more real manuscripts written by a single
-known scribe, with matched line lengths, to see whether line-edge glyphs
-differ from mid-line glyphs there too. This is the first item because
-the result is the only new positive finding and depends on it.</li>
 <li><strong>The one-off word process.</strong> Model how long one-off
 words arise, given that they keep line-edge habits but have new
-onset–ending pairs.</li>
+onset–ending pairs and fewer doubled glyphs. The catalogue in the
+repository is a starting point.</li>
+<li><strong>A boundary mechanism</strong> that produces strong boundary
+coupling without ending agreement or word order, tested against the
+frozen S6-Z1b.</li>
+<li><strong>A second control hand (low priority).</strong> Repeat the
+line-edge test on a prose-only textualis manuscript, mainly to check the
+weak line-final arm.</li>
 <li><strong>Davis’s stroke criteria with independent
 annotation.</strong> Ask independent annotators to mark strokes, then
 retry the scribe-distinction test with the segmenter.</li>
@@ -530,113 +780,239 @@ retry the scribe-distinction test with the segmenter.</li>
 candidate erasures and ink breaks.</li>
 <li><strong>Hand-confirmed overwrites</strong>, using the segmenter to
 propose candidates for expert review.</li>
-<li><strong>A boundary mechanism</strong> that produces strong boundary
-coupling without ending agreement or word order, tested against the
-frozen S6-Z1b.</li>
 </ol>
+<h1 class="unnumbered" id="ai-assistance-statement">AI assistance
+statement</h1>
+<p>This work was carried out with substantial AI assistance. Claude Opus
+5.5, a large language model made by Anthropic, designed and ran the
+analyses, wrote the code, drafted the pre-registrations and wrote this
+paper, working under the direction of Paul Stark. Paul Stark chose the
+questions and ground rules (shuffled and generated controls for every
+claim, pre-registration where possible, held-out pages for any reading),
+ran the GPU jobs on his own computer, decided which results to pursue
+and how to present them, and checked the results and the text. Claude is
+listed as a co-author to make its role clear; responsibility for the
+paper rests with Paul Stark. All code, decision rules and outputs are
+public so that any result can be checked independently.</p>
 <h1 class="unnumbered" id="acknowledgements">Acknowledgements</h1>
 <p>This work rests on the research and generosity of the Voynich
 community. We thank René Zandbergen and Gabriel Landini for the ZL
 transliteration, the IVTFF format and voynich.nu; the transcribers
-behind IT2a-n (Takahashi), RF1b-e and CD2a-n; the EVMT project; Lisa
-Fagin Davis for the scribal hands and the 2024 multispectral study;
+behind IT2a-n (Takeshi Takahashi), RF1b-e and CD2a-n; the EVMT project;
+Lisa Fagin Davis for the scribal hands and the 2024 multispectral study;
 Colin Layfield and Lisa Fagin Davis for the singulion hypothesis;
-Torsten Timm for the self-citation model, his generator code under MIT
-and his review of the singulion proposal; Stephen Bax, Gerard Cheshire,
-Michael Greshko (the Naibbe cipher and code), Parisel, Gordon Rugg and
-Jorge Stolfi, whose proposals we tested; Prescott Currier; Nick Pelling,
-Dulov and McCrone Associates for physical evidence; Rozanova and Temerev
-and Ward for word and letter boxes; Kiessling and the Kraken
-contributors; Gaskell and Bowern, Montemurro and Zanette, and the
-editors of RIDGES, ReM, HTRomance and the Zenodo ground-truth sets; and
-the Beinecke Rare Book and Manuscript Library for the images and
-multispectral data.</p>
+Torsten Timm and Andreas Schinner for the self-citation model, and
+Torsten Timm for his generator code under MIT and his review of the
+singulion proposal; Stephen Bax, Gerard Cheshire, Michael Greshko (the
+Naibbe cipher and code), Christophe Parisel, Gordon Rugg and Jorge
+Stolfi, whose proposals we tested; Prescott Currier; Nick Pelling,
+Wladimir Dulov and McCrone Associates for physical evidence; Liudmila
+Rozanova, Alexander Temerev and Lainey Louise Ward for word and letter
+boxes; Benjamin Kiessling and the Kraken contributors; Daniel Gaskell
+and Claire Bowern, Marcelo Montemurro and Damián Zanette, and the
+editors of RIDGES, ReM, HTRomance and the Zenodo ground-truth sets; the
+Bayerische Staatsbibliothek for the images of Clm 5905; and the Beinecke
+Rare Book and Manuscript Library, Yale University, for the images and
+multispectral data of MS 408.</p>
 <h1 class="unnumbered" id="references">References</h1>
 <div class="ref">
-<p>Bax, S. (2014). A proposed partial decoding of the Voynich
-script.</p>
+<p>Bax, Stephen. 2014. A proposed partial decoding of the Voynich
+script. Version 1, January 2014. Self-published.
+https://stephenbax.net/wp-content/uploads/2014/01/Voynich-a-provisional-partial-decoding-BAX.pdf.</p>
 </div>
 <div class="ref">
-<p>Brunel, C. (1957). <em>Recettes médicales, alchimiques et
-astrologiques du XVe siècle en langue vulgaire des Pyrénées.</em></p>
+<p>Bayerische Staatsbibliothek. 1479. Clm 5905 (Macer, <em>De viribus
+herbarum</em>, and Latin remedies; Ebersberg, scribe Vitus Auslasser).
+Munich: Bayerische Staatsbibliothek. Digital facsimile:
+https://www.digitale-sammlungen.de/view/bsb00092488.</p>
 </div>
 <div class="ref">
-<p>Cheshire, G. (2019). The language and writing system of MS408
-(Voynich) explained. <em>Romance Studies</em> 37(1).</p>
+<p>Beinecke Rare Book and Manuscript Library. n.d. <em>Cipher
+manuscript</em> (MS 408, the Voynich Manuscript). New Haven, CT: Yale
+University. https://collections.library.yale.edu/catalog/2002046.</p>
 </div>
 <div class="ref">
-<p>Currier, P. (1976). Papers on the Voynich Manuscript.</p>
+<p>Brunel, Clovis. 1957. Recettes médicales, alchimiques et
+astrologiques du XV<sup>e</sup> siècle en langue vulgaire des Pyrénées.
+<em>Romania</em> 78(3). 289–339.</p>
 </div>
 <div class="ref">
-<p>Davis, L. F. (2020). How many glyphs and how many scribes? Digital
-palaeography and the Voynich Manuscript. <em>Manuscript Studies</em>
-5(1).</p>
+<p>Cheshire, Gerard. 2019. The language and writing system of MS408
+(Voynich) explained. <em>Romance Studies</em> 37(1). 30–67.
+https://doi.org/10.1080/02639904.2019.1599566.</p>
 </div>
 <div class="ref">
-<p>Davis, L. F. (2024). Multispectral imaging of the Voynich Manuscript
-(report).</p>
+<p>Currier, Prescott H. 1976. Papers on the Voynich Manuscript. In Mary
+E. D’Imperio (ed.), <em>New research on the Voynich Manuscript:
+Proceedings of a seminar, 30 November 1976</em>. Washington, DC.
+Transcribed at https://www.voynich.nu/extra/curr_main.html.</p>
 </div>
 <div class="ref">
-<p>Gaskell, D. E. and Bowern, C. L. (2022). Gibberish after all?
+<p>Davis, Lisa Fagin. 2020. How many glyphs and how many scribes?
+Digital paleography and the Voynich Manuscript. <em>Manuscript
+Studies</em> 5(1). 164–180. https://doi.org/10.1353/mns.2020.0011.</p>
+</div>
+<div class="ref">
+<p>Davis, Lisa Fagin. 2024. Multispectral imaging and the Voynich
+Manuscript. <em>Manuscript Road Trip</em> (blog), 8 September 2024.
+https://manuscriptroadtrip.wordpress.com/2024/09/08/multispectral-imaging-and-the-voynich-manuscript/.</p>
+</div>
+<div class="ref">
+<p>Dulov, Wladimir. 2022. [Wormholes and page numbering in quire 20 of
+the Voynich Manuscript.] Blog post, June 2022.
+https://vladimirdulov.blogspot.com/2022/06/page-numbering-was-done-by-at-least-4.html.</p>
+</div>
+<div class="ref">
+<p>Early New High German diplomatic HTR ground truth, version 2
+(charters and registers, 1480–1485). n.d. Dataset. Zenodo.
+https://zenodo.org/records/21257167.</p>
+</div>
+<div class="ref">
+<p>Gaskell, Daniel E. &amp; Claire L. Bowern. 2022. Gibberish after all?
 Voynichese is statistically similar to human-produced samples of
-meaningless text.</p>
+meaningless text. In <em>Proceedings of the International Conference on
+the Voynich Manuscript 2022</em> (CEUR Workshop Proceedings 3313), paper
+4. https://ceur-ws.org/Vol-3313/paper4.pdf.</p>
 </div>
 <div class="ref">
-<p>Greshko, M. The Naibbe cipher (paper and code).</p>
+<p>Greshko, Michael A. 2025. The Naibbe cipher: A substitution cipher
+that encrypts Latin and Italian as Voynich Manuscript-like ciphertext.
+<em>Cryptologia</em>. https://doi.org/10.1080/01611194.2025.2566408.
+Code: https://github.com/greshko/naibbe-cipher.</p>
 </div>
 <div class="ref">
-<p>Ineichen, G. (1962). <em>El libro agregà de Serapiom.</em></p>
+<p>HTRomance project. n.d. HTRomance: Ground truth for handwritten text
+recognition of medieval Romance-language manuscripts.
+https://github.com/HTRomance-Project.</p>
 </div>
 <div class="ref">
-<p>Kiessling, B. et al. Kraken OCR engine, version 7.1.1.</p>
+<p>Ineichen, Gustav (ed.). 1962–1966. <em>El libro agregà de
+Serapiom</em>. 2 vols. Venice &amp; Rome: Istituto per la Collaborazione
+Culturale.</p>
 </div>
 <div class="ref">
-<p>Layfield, C. and Davis, L. F. (2026). <em>Digital Medievalist</em>
-19.</p>
+<p>Inzigkofen manuscripts (Berlin, Ms. germ. oct. 842 and fol. 1045),
+full transcriptions. n.d. Dataset. Zenodo.
+https://doi.org/10.5281/zenodo.17978574.</p>
 </div>
 <div class="ref">
-<p>Montemurro, M. A. and Zanette, D. H. (2013). Keywords and
-co-occurrence patterns in the Voynich Manuscript. <em>PLoS ONE</em>
-8(6).</p>
+<p>Kiessling, Benjamin. 2019. Kraken: An universal text recognizer for
+the humanities. In <em>Digital Humanities 2019 (DH2019): Book of
+abstracts</em>. Utrecht: Utrecht University. Software, version 7.1.1:
+https://github.com/mittagessen/kraken.</p>
 </div>
 <div class="ref">
-<p>Parisel (2026). The cho/che switch.</p>
+<p>Klein, Thomas, Klaus-Peter Wegera, Stefanie Dipper &amp; Claudia
+Wich-Reif. 2016. <em>Referenzkorpus Mittelhochdeutsch (1050–1350)</em>,
+version 1.0. Bochum: Ruhr-Universität Bochum.
+https://www.linguistics.ruhr-uni-bochum.de/rem/.</p>
 </div>
 <div class="ref">
-<p>Pelling, N. (2006). <em>The Curse of the Voynich.</em></p>
+<p>Klosterneuburg Cod. 48 HTR ground truth. n.d. Dataset. Zenodo.
+https://doi.org/10.5281/zenodo.7466927.</p>
 </div>
 <div class="ref">
-<p>Rozanova and Temerev (2026). Word boxes, voynichese.com.</p>
+<p>Layfield, Colin &amp; Lisa Fagin Davis. 2026. Singulion structure and
+the Voynich Manuscript. <em>Digital Medievalist</em> 19.
+https://doi.org/10.4000/16k0a.</p>
 </div>
 <div class="ref">
-<p>Rugg, G. (2004). An elegant hoax? A possible solution to the Voynich
-manuscript. <em>Cryptologia</em> 28(1).</p>
+<p>Leclerc, Lucien (trans.). 1877–1883. <em>Traité des simples par Ibn
+el-Beïthar</em>. 3 vols. Paris: Imprimerie nationale.</p>
 </div>
 <div class="ref">
-<p>Stolfi, J. Voynich word grammar and notes on quire 13.</p>
+<p>McCrone Associates. 2009. Materials analysis of the Voynich
+Manuscript. Report prepared for the Beinecke Rare Book and Manuscript
+Library. Westmont, IL: McCrone Associates.</p>
 </div>
 <div class="ref">
-<p>Timm, T. and Schinner, A. (2020). A possible generating algorithm of
-the Voynich manuscript. <em>Cryptologia</em> 44(1).</p>
+<p>Montemurro, Marcelo A. &amp; Damián H. Zanette. 2013. Keywords and
+co-occurrence patterns in the Voynich Manuscript: An
+information-theoretic analysis. <em>PLoS ONE</em> 8(6). e66344.
+https://doi.org/10.1371/journal.pone.0066344.</p>
 </div>
 <div class="ref">
-<p>Timm, T. SelfCitationTextGenerator (MIT licence),
-github.com/TorstenTimm.</p>
+<p>Odebrecht, Carolin, Malte Belz, Amir Zeldes, Anke Lüdeling &amp;
+Thomas Krause. 2017. RIDGES Herbology: Designing a diachronic
+multi-layer corpus. <em>Language Resources and Evaluation</em> 51(3).
+695–725. https://doi.org/10.1007/s10579-016-9374-3. Corpus version
+9.0.</p>
 </div>
 <div class="ref">
-<p>Ward (2026). <code>voynich-letters</code>.</p>
+<p>Parisel, Christophe. 2026. A quantitative confirmation of the Currier
+language distinction. arXiv:2604.25979.
+https://arxiv.org/abs/2604.25979.</p>
 </div>
 <div class="ref">
-<p>Zandbergen, R. and Landini, G. ZL3b-n transliteration and IVTFF
-format, voynich.nu.</p>
+<p>Pelling, Nick. 2006. <em>The curse of the Voynich: The secret history
+of the world’s most mysterious manuscript</em>. Surbiton: Compelling
+Press.</p>
 </div>
-<p>Comparison editions (Leclerc’s Ibn al-Baytar, Wellmann’s Dioscorides,
-<em>Alphita</em>, <em>Sinonoma Bartholomei</em>, Brunschwig, Megenberg,
-Culpeper, Isidore, Pliny, Lilly, <em>The Forme of Cury</em>) are listed
-with their editors in the corpus READMEs in the repository.</p>
+<div class="ref">
+<p>Pelling, Nick. 2022. Quire 20, order from chaos… (Part 1: Evidence).
+<em>Cipher Mysteries</em> (blog), 20 December 2022.
+https://ciphermysteries.com/2022/12/20/quire-20-order-from-chaos-part-1-evidence.</p>
+</div>
+<div class="ref">
+<p>Rozanova, Liudmila &amp; Alexander Temerev. 2026. A glyph is not a
+letter, a token is not a word, a space is not a space: What the units of
+Voynichese are not. arXiv:2608.17096. https://arxiv.org/abs/2608.17096.
+Word-box data: https://github.com/lrozanova/voynich-units.</p>
+</div>
+<div class="ref">
+<p>Rugg, Gordon. 2004. An elegant hoax? A possible solution to the
+Voynich manuscript. <em>Cryptologia</em> 28(1). 31–46.
+https://doi.org/10.1080/0161-110491892755.</p>
+</div>
+<div class="ref">
+<p>Stolfi, Jorge. 2000. A grammar for Voynichese words. Campinas:
+Universidade Estadual de Campinas.
+https://www.ic.unicamp.br/~stolfi/voynich/00-06-07-word-grammar/.</p>
+</div>
+<div class="ref">
+<p>Timm, Torsten. 2026. [Review of Layfield and Davis’s singulion
+hypothesis.] <em>The Voynich Ninja</em> forum, thread 5911.
+https://www.voynich.ninja/archive/index.php/thread-5911.html.</p>
+</div>
+<div class="ref">
+<p>Timm, Torsten. n.d. SelfCitationTextgenerator (software, MIT
+licence). https://github.com/TorstenTimm/SelfCitationTextgenerator.</p>
+</div>
+<div class="ref">
+<p>Timm, Torsten &amp; Andreas Schinner. 2020. A possible generating
+algorithm of the Voynich manuscript. <em>Cryptologia</em> 44(1). 1–19.
+https://doi.org/10.1080/01611194.2019.1596999.</p>
+</div>
+<div class="ref">
+<p>Ward, Lainey Louise. 2026. voynich-letters (software).
+https://github.com/LaineyLouiseWard/voynich-letters.</p>
+</div>
+<div class="ref">
+<p>Wellmann, Max (ed.). 1906–1914. <em>Pedanii Dioscuridis Anazarbei De
+materia medica libri quinque</em>. 3 vols. Berlin: Weidmann.</p>
+</div>
+<div class="ref">
+<p>Zandbergen, René. n.d. <em>The Voynich Manuscript</em> (website).
+https://www.voynich.nu.</p>
+</div>
+<div class="ref">
+<p>Zandbergen, René &amp; Gabriel Landini. n.d. ZL3b-n transliteration
+of the Voynich MS, in IVTFF format. https://www.voynich.nu/transcr.html.
+Released under CC0.</p>
+</div>
+<div class="ref">
+<p>Zyats, Paula. 2016. [Codicology and conservation of MS 408.] In
+Raymond Clemens (ed.), <em>The Voynich Manuscript</em>. New Haven, CT:
+Yale University Press in association with the Beinecke Rare Book and
+Manuscript Library. Not consulted.</p>
+</div>
+<p>Further comparison editions (<em>Alphita</em>, <em>Sinonoma
+Bartholomei</em>, Brunschwig, Megenberg, Culpeper, Isidore, Pliny, Lilly
+and <em>The Forme of Cury</em>) are listed with their editors and
+sources in the corpus READMEs in the repository.</p>
 <h1 class="appendix unnumbered" id="appendix-a-test-register">Appendix
 A: test register</h1>
-<p>All 248 test entries in the consolidated findings, one row per test,
+<p>All 249 test entries in the consolidated findings, one row per test,
 in the order recorded. “Pre” marks pre-registered tests. Verdicts are
 quoted from each entry, or written by hand where an entry had none. The
 machine-readable table is <code>master_results_table.csv</code>.</p>
@@ -4964,7 +5340,7 @@ Glyph segmenter and letter-level reruns (PC, 26 Nov 2026) / P3-c
 <td>
 </td>
 <td>
-PASS, ROBUST, pen form
+PASS within the Voynich; superseded by P3-e (ordinary scribal behaviour)
 </td>
 </tr>
 <tr>
@@ -5001,11 +5377,30 @@ ink-session breaks): NOT FOUND.
 NOT FOUND
 </td>
 </tr>
+<tr>
+<td>
+P3-e
+</td>
+<td>
+Ink &amp; image tests
+</td>
+<td>
+P3-e (PC, 26 Nov 2026): control hand for the P3-c line-edge pen-form
+effect — line-initial: ORDINARY; line-final: weak in both hands (p3e/, …
+</td>
+<td>
+yes
+</td>
+<td>
+ORDINARY: control hand shows line-initial effect as strongly (0.681 vs
+0.641); line-final weak in both
+</td>
+</tr>
 </tbody>
 </table>
 <h1 class="appendix unnumbered"
 id="appendix-b-pre-registrations">Appendix B: pre-registrations</h1>
-<p>119 of 248 tests were pre-registered: the decision rule, bands and
+<p>120 of 249 tests were pre-registered: the decision rule, bands and
 controls were written to a <code>PREREG.md</code> file in the test’s
 folder before the data were examined. The list below gives each
 pre-registered test and its folder in the repository’s results
@@ -6443,6 +6838,18 @@ statistic 25, refit on Z1b — not kept (s6z/z5/)
 s6z/z5/
 </td>
 </tr>
+<tr>
+<td>
+P3-e
+</td>
+<td>
+P3-e (PC, 26 Nov 2026): control hand for the P3-c line-edge pen-form
+effect — line-initial: ORDINARY; line-final: weak …
+</td>
+<td>
+p3e/
+</td>
+</tr>
 </tbody>
 </table>
 <h1 class="appendix unnumbered"
@@ -6450,11 +6857,13 @@ id="appendix-c-methods-and-numbers-by-test">Appendix C: methods and
 numbers by test</h1>
 <figure>
 <img src="../figures/fig9_p3d_line_edge_masks.png" style="width:48.0%"
-alt="P3-d, illustration only: mean segmenter masks for line-edge and mid-line glyphs. Red marks more ink at the line edge, blue more ink mid-line. Band-fit error at line ends partly confounds these means, so they are not evidence." />
+alt="P3-d, illustration only: mean segmenter masks for line-edge and mid-line glyphs. Red marks more ink at the line edge, blue more ink mid-line. Band-fit error at line ends partly confounds these means, so they are not evidence. Derived from images of MS 408, Beinecke Rare Book and Manuscript Library, Yale University." />
 <figcaption aria-hidden="true">P3-d, illustration only: mean segmenter
 masks for line-edge and mid-line glyphs. Red marks more ink at the line
 edge, blue more ink mid-line. Band-fit error at line ends partly
-confounds these means, so they are not evidence.</figcaption>
+confounds these means, so they are not evidence. Derived from images of
+MS 408, Beinecke Rare Book and Manuscript Library, Yale
+University.</figcaption>
 </figure>
 <p>Each entry gives the test, its verdict, its controls and an excerpt
 of the recorded result. Full write-ups, code and outputs are in the
@@ -10117,7 +10526,8 @@ Scribe 2/3 difference.
 <p>
 <b>P3-c. Glyph segmenter and letter-level reruns (PC, 26 Nov 2026) /
 P3-c (line-edge pen form, clipped GS masks): PASS, ROBUST, pen form.</b>
-<span class="v">PASS, ROBUST, pen form</span>
+<span class="v">PASS within the Voynich; superseded by P3-e (ordinary
+scribal behaviour)</span>
 </p>
 <p>
 P3-c (line-edge pen form, clipped GS masks): PASS, ROBUST, pen form. L
@@ -10158,6 +10568,30 @@ line 23.
 </p>
 <p class="c">
 Controls: The method is calibrated on f115r (p 0.001).
+</p>
+</div>
+<div class="entry">
+<p>
+<b>P3-e. P3-e (PC, 26 Nov 2026): control hand for the P3-c line-edge
+pen-form effect — line-initial: ORDINARY; line-final: weak in both hands
+(p3e/, PC Voynich/p3e/)</b> <span class="v">ORDINARY: control hand shows
+line-initial effect as strongly (0.681 vs 0.641); line-final weak in
+both</span>
+</p>
+<p>
+Pre-registered (p3e/PREREG.md, two deviations decided before outcomes,
+in p3e/RESUME.md). Control: BSB Clm 5905 (Ebersberg 1479, Vitus
+Auslasser; Latin Macer verse + remedy prose, gothic cursive), 336 text
+pages, 6,047 lines, 157k letters. Same pipeline as P3-c: Kraken
+(CATMuS-Medieval) letter cuts, GS segmenter retrained on this hand's own
+~4,000 clean exemplars (rendered validation IoU 0.94–0.98, baseline
+0.70–
+</p>
+<p class="c">
+Controls: Control: BSB Clm 5905 (Ebersberg 1479, Vitus Auslasser; Same
+pipeline as P3-c: Kraken (CATMuS-Medieval) letter cuts, GS segmenter
+retrained on this hand's own ~4,000 clean exemplars (rendered validation
+IoU 0.94–0.98, baseline 0.70–0.80), unchanged p3.py with …
 </p>
 </div></li>
 </ul></li>
@@ -11657,9 +12091,11 @@ github.com/MisterQokedy/project-voynich: the frozen S6-Z1b generator,
 the 24-statistic scorer, the decipherment harness and crib decoders, the
 language test, the sheet-order search with its shuffled null, the line
 and boundary statistics, the one-off analysis, the Kraken line-reader
-and glyph-segmenter code, the letter-box feature code and the scripts
-that build this paper’s table and figures. Our code is released under
-MIT and this text and its figures under CC BY 4.0.</p>
+and glyph-segmenter code, the letter-box feature code, the P3-e
+control-hand code, the one-off word catalogue and the scripts that build
+this paper’s table and figures. Our code is released under MIT. This
+text and its figures are © 2026 Paul Stark and licensed under CC BY
+4.0.</p>
 <p>The repository includes the four CC0 transliterations (ZL3b-n,
 IT2a-n, RF1b-e, CD2a-n) from voynich.nu, and Timm’s
 SelfCitationTextGenerator with our patches under his MIT notice. Trained
@@ -11668,5 +12104,177 @@ about 62 MB) are in the repository’s <code>weights/</code> folder with
 SHA-256 checksums. Comparison corpora and the Beinecke images are not
 redistributed; download scripts fetch them from their publishers. Kraken
 is installed as a pip dependency.</p>
+<p>Figures that show or are derived from manuscript images credit the
+Beinecke Rare Book and Manuscript Library, Yale University (MS 408, a
+public-domain item reused under Yale’s open-access policy) and, for the
+control hand, the Bayerische Staatsbibliothek, Munich (Clm 5905).</p>
+<h1 class="appendix unnumbered"
+id="appendix-e-catalogue-of-free-one-off-words">Appendix E: catalogue of
+free one-off words</h1>
+<p>This appendix summarises a catalogue of the one-off words that the
+generator fails to reproduce (Section 6.2). A <strong>free
+one-off</strong> occurs once in the ZL3b-n transliteration (EVA) and is
+at least three edits away from every frequent word (count 10 or more)
+and from each of the 40 words before it. There are 1,328 of them, 24% of
+the 5,526 one-offs. Classification, controls and statistics come from
+the earlier one-off studies (OO, OO-SP, OO-N, OO-L in Appendix A).
+Nothing was refitted for the catalogue; the only new computation is a
+descriptive word split and a pair lookup.</p>
+<p><strong>Full lists in the repository.</strong> The complete data are
+in <code>data/oneoff_catalogue/</code> at
+https://github.com/MisterQokedy/project-voynich:</p>
+<ul>
+<li><code>free_oneoffs_catalogue.csv</code>: all 1,328 free one-offs,
+one row each, with page, line, section, Currier language, scribe (Davis
+hand), quire, position in the line, placement (paragraph 1,038; label
+138; circle 127; radial 25), length, a prefix–core–ending split, gallows
+count, positions of p and f, doubled e or i, start glyph and last two
+letters, a flag for start–ending pairs found only in one-offs, and the
+nearest frequent word with its edit distance.</li>
+<li><code>oneoff_only_pairs.csv</code>: the 133 start–ending pairs
+(first glyph plus last two letters) that occur in free one-offs and in
+no word seen twice or more, with counts and up to five example
+words.</li>
+<li><code>code/build.py</code>: rebuilds both files from the one-off
+table and the ZL transliteration.</li>
+</ul>
+<p>The prefix–core–ending split is a descriptive convention, not a claim
+about morphology: the core runs from the first gallows or bench (ch, sh)
+to the last, and takes in any e or h that follows. Of the free one-offs,
+250 contain p, 100 contain f and 218 have two or more gallows. 157 (12%)
+carry a start–ending pair that never appears in a recurring word; most
+pairs occur once, and the commonest are p…ry (4 words) and r…ty, o…sh,
+t…ry and d…ed (3 each).</p>
+<h2 class="unnumbered" id="e.1-doubled-e-or-i">E.1 Doubled e or i</h2>
+<p>Spelling rates are length-weighted to free one-off lengths 6–11, with
+95% bootstrap intervals.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Group</th>
+<th>Share with a doubled glyph</th>
+<th>ee per 100 words</th>
+<th>ii per 100 words</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Real free one-offs</td>
+<td>0.30 [0.28, 0.33]</td>
+<td>26</td>
+<td>11</td>
+</tr>
+<tr class="even">
+<td>Real one-offs within two edits of a recent word</td>
+<td>0.48 [0.44, 0.51]</td>
+<td>21</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>Unit-shuffled free one-offs (control)</td>
+<td>0.38 [0.36, 0.41]</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>S6-Z generator free one-offs (control)</td>
+<td>0.44 [0.42, 0.47]</td>
+<td>36</td>
+<td>23</td>
+</tr>
+<tr class="odd">
+<td>German herbal free one-offs, own lengths (control)</td>
+<td>0.23</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 class="unnumbered" id="e.2-stacked-gallows">E.2 Stacked gallows</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Group</th>
+<th>Share with two or more gallows</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Real free one-offs</td>
+<td>0.16 [0.14, 0.18]</td>
+</tr>
+<tr class="even">
+<td>Real one-offs within two edits of a recent word</td>
+<td>0.085 [0.06, 0.11]</td>
+</tr>
+<tr class="odd">
+<td>S6-Z generator free one-offs (control)</td>
+<td>0.107 [0.09, 0.12]</td>
+</tr>
+</tbody>
+</table>
+<p>The p and f pairs are over-represented in free one-offs, against all
+tokens, more strongly than in generator one-offs: ep 7.7× (generator
+3.4×), po 4.6× (2.3×), fch 3.8× (1.8×), of 3.6× (1.7×). Of the 218
+multi-gallows words, 113 are mid-line, so these are not only
+paragraph-initial words. Unit shuffling keeps the gallows count fixed,
+so it is not a control for this table.</p>
+<h2 class="unnumbered" id="e.3-placement-label-enrichment">E.3
+Placement: label enrichment</h2>
+<p>Holm-corrected; the null shuffles placement labels.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Comparison</th>
+<th>Free share of one-offs</th>
+<th>Shuffled-placement null</th>
+<th>p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Labels vs paragraphs</td>
+<td>0.33 vs 0.23 (+0.10)</td>
+<td>+0.04</td>
+<td>0.0015 (length-stratified 0.0005)</td>
+</tr>
+<tr class="even">
+<td>Circle and radial text vs paragraphs</td>
+<td>+0.045</td>
+<td>+0.031</td>
+<td>0.23, not significant</td>
+</tr>
+<tr class="odd">
+<td>Line-first vs rest of line</td>
+<td>+0.069</td>
+<td>−0.005</td>
+<td>0.0005 (length-stratified 0.06)</td>
+</tr>
+</tbody>
+</table>
+<p>The label excess survives length control; the line-first excess
+mostly reflects length. Label one-offs are no closer to each other
+across pages than matched paragraph one-offs (0.320 vs 0.323, p 0.32),
+so the excess does not point to a shared stock of names.</p>
+<h2 class="unnumbered" id="e.4-limits">E.4 Limits</h2>
+<p>These are regularities of spelling and placement. Tests of meaning on
+the same words failed: free one-offs do not recur as near-variants on
+pages with similar plant drawings (p 0.71), their tie to same-section
+pages matches other one-offs of equal length, and a noun-profile
+comparison with German herbals did no better than generated text. The
+catalogue is offered as material for further study and does not argue
+for any reading.</p>
 </body>
 </html>
