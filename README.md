@@ -7,6 +7,14 @@ Version 1.1, 26 November 2026. Preprint, not peer-reviewed. Written with AI assi
 
 This repository holds the code, transliterations and model weights behind 249 tests on Beinecke MS 408. Most of the tests check hypotheses published by other researchers (Layfield and Davis, Timm, Bax, Cheshire, Greshko, Stolfi and others), using the data and code they made public. Every result was compared against shuffled text, generated text or both, and 120 tests were pre-registered.
 
+## In plain terms: the scribe's writing habits
+
+* Words are built from fixed slots. Every word follows the same pattern: an optional beginning, a middle built around the tall "gallows" letters, then an ending. It's like a word built from Lego pieces that only snap together in a certain order. Even the rare one-off words obey it.
+* Copy and tweak. Rather than inventing each word, the scribe mostly looked back at a word written recently, often on the line above, and wrote it again with a small change. That's why near-identical words cluster together.
+* Lines have their own start and end habits. Certain letters and word types favour the start of a line and others the end, much like a capital letter starts a sentence. That habit turns out to be normal for scribes of the period.
+* Each section and scribe has its own style. The two "dialects" (Currier A and B) and different sections use slightly different stocks of words and endings, like two people with different favourite phrases.
+* Simple freedom of choice! The scribe was free to choose which word to copy and how much to change it. None of this needs the text to carry meaning, but none of it rules meaning out either.
+
 ## Main results
 
 | Question | Result |
