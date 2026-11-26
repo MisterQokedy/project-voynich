@@ -37,7 +37,7 @@ No reading passed the translation criteria, which required holding on held-out p
 | `third_party/timm/` | Timm's SelfCitationTextGenerator with our position rules, under his MIT licence |
 | `data/transliterations/` | ZL3b-n, IT2a-n, RF1b-e and CD2a-n (CC0, from voynich.nu) |
 | `fetch/` | Download scripts for comparison corpora and images, which we do not redistribute |
-| `weights/` | Checksums and descriptions; the files are on the [v1.0 release](../../releases/tag/v1.0) |
+| `weights/` | Trained weights with checksums: Kraken reader seeds and segmenter folds (62 MB) |
 
 ## Running the code
 
