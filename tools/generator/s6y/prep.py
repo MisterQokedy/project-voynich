@@ -1,0 +1,5 @@
+exec(open('./work/s6y/code/shim6.py').read())
+exec(open('./work/s6k/code/s6k.py').read())
+exec(open('./work/ws2/code/ws2.py').read())
+exec(open('./work/s6y/code/s6y.py').read())
+print('RUN', _RUN, 'FI', len(FI), 'TI', len(TI), flush=True)

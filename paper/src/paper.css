@@ -1,0 +1,33 @@
+@page { size: A4; margin: 22mm 20mm 22mm 20mm; background: #fff;
+  @bottom-center { content: counter(page); font: 9pt "DejaVu Serif", serif; color: #666; } }
+@page:first { @bottom-center { content: none; } }
+html { background:#fff; }
+body { font-family: "DejaVu Serif", Georgia, serif; font-size: 10pt; line-height: 1.45; color: #191919; max-width: none; margin: 0; padding: 0; background:#fff; }
+header#title-block-header { display: none; }
+.titlepage { page-break-after: always; text-align: center; padding-top: 30mm; }
+.titlepage .icon { width: 62mm; }
+.titlepage h1.title { font-size: 24pt; margin: 14mm 0 4mm; border: none; page-break-before: avoid; }
+.titlepage h2.subtitle { font-size: 13pt; font-weight: normal; color: #444; margin: 0 10mm; }
+.byline { font-size: 13pt; margin-top: 18mm; }
+.date { color: #555; margin-top: 4mm; }
+.licence { color: #666; font-size: 8.5pt; margin-top: 40mm; }
+nav#TOC { page-break-after: always; } nav#TOC ul { list-style: none; padding-left: 0; } nav#TOC a { color: #191919; text-decoration: none; }
+h1 { font-size: 15pt; margin-top: 18pt; } h2 { font-size: 12pt; margin-top: 12pt; }
+h1.appendix, h1:has(+ .reg) { page-break-before: always; }
+h1#abstract, h1#plain-language-summary { page-break-before: auto; }
+#plain-language-summary { page-break-before: always; }
+p { text-align: justify; hyphens: auto; margin: 0 0 6pt; }
+figure { margin: 8pt 0; text-align: center; page-break-inside: avoid; }
+figure img { max-width: 100%; }
+figcaption { font-size: 8.5pt; color: #444; text-align: left; margin-top: 3pt; }
+a { color: #1a5fb4; }
+table.reg { width: 100%; border-collapse: collapse; font-size: 7pt; line-height: 1.25; }
+table.reg th, table.reg td { border-bottom: 0.4pt solid #ccc; padding: 2pt 3pt; vertical-align: top; text-align: left; }
+table.reg thead { display: table-header-group; }
+.entry { font-size: 8pt; line-height: 1.3; margin-bottom: 5pt; page-break-inside: avoid; }
+.entry p { margin: 0 0 1pt; text-align: left; } .entry .v { color: #1a5fb4; } .entry .c { color: #555; }
+ul { margin: 0 0 6pt; }
+.ref p { text-align:left; padding-left: 1.5em; text-indent: -1.5em; margin-bottom: 3pt; }
+.titlepage .ttl { font-size: 24pt; font-weight: bold; margin: 14mm 0 5mm; }
+.titlepage .sub { font-size: 13pt; color: #444; margin: 0 12mm; }
+.newpage { page-break-before: always; }
