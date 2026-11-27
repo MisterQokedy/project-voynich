@@ -2,7 +2,7 @@
 
 # Project Voynich
 
-**Paper: [A copying procedure, not a cipher: 249 controlled tests on the Voynich Manuscript (PDF)](paper/paper.pdf)**
+**Paper: [A copying procedure, unlikely a cipher: 249 controlled tests on the Voynich Manuscript (PDF)](paper/paper.pdf)**
 Version 1.2, 27 November 2026. Preprint, not peer-reviewed. Written with AI assistance (Claude Opus 5.5); see the paper's AI assistance statement.
 
 This repository holds the code, transliterations and model weights behind 249 tests on Beinecke MS 408. Most of the tests check hypotheses published by other researchers (Layfield and Davis, Timm, Bax, Cheshire, Greshko, Stolfi and others), using the data and code they made public. Every result was compared against shuffled text, generated text or both, and 120 tests were pre-registered.

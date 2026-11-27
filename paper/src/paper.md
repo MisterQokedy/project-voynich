@@ -1,5 +1,5 @@
 ---
-title: "A copying procedure, not a cipher: 249 controlled tests on the Voynich Manuscript"
+title: "A copying procedure, unlikely a cipher: 249 controlled tests on the Voynich Manuscript"
 ---
 
 # Abstract {.unnumbered}

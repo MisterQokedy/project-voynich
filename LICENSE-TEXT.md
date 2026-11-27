@@ -4,7 +4,7 @@ The paper (`paper/paper.pdf` and `paper/src/`), the results table (`paper/master
 
 © 2026 Paul Stark.
 
-Attribution: Paul Stark and Claude Opus 5.5, *A copying procedure, not a cipher: 249 controlled tests on the Voynich Manuscript*, version 1.1 (2026, preprint), https://github.com/MisterQokedy/project-voynich.
+Attribution: Paul Stark and Claude Opus 5.5, *A copying procedure, unlikely a cipher: 249 controlled tests on the Voynich Manuscript*, version 1.1 (2026, preprint), https://github.com/MisterQokedy/project-voynich.
 
 Figures that show or are derived from manuscript images also credit the Beinecke Rare Book and Manuscript Library, Yale University (MS 408), and, for the control hand, the Bayerische Staatsbibliothek, Munich (Clm 5905). The licence above covers our figures, not the underlying manuscript images.
 
