@@ -3,7 +3,7 @@
 # Project Voynich
 
 **Paper: [A copying procedure, not a cipher: 249 controlled tests on the Voynich Manuscript (PDF)](paper/paper.pdf)**
-Version 1.1, 26 November 2026. Preprint, not peer-reviewed. Written with AI assistance (Claude Opus 5.5); see the paper's AI assistance statement.
+Version 1.2, 27 November 2026. Preprint, not peer-reviewed. Written with AI assistance (Claude Opus 5.5); see the paper's AI assistance statement.
 
 This repository holds the code, transliterations and model weights behind 249 tests on Beinecke MS 408. Most of the tests check hypotheses published by other researchers (Layfield and Davis, Timm, Bax, Cheshire, Greshko, Stolfi and others), using the data and code they made public. Every result was compared against shuffled text, generated text or both, and 120 tests were pre-registered.
 
@@ -19,9 +19,9 @@ This repository holds the code, transliterations and model weights behind 249 te
 
 | Question | Result |
 |---|---|
-| Was the bifolium the unit of writing? | Yes. Same-sheet pages share vocabulary far beyond controls, as Layfield and Davis found; sheets were written Xr→Xv→Yr→Yv (p 0.0008). |
-| Can the text recover sheet order? | No quire beats a shuffled-page null (p 0.55–0.997). Calibration shows the method cannot see order at quire scale. |
-| Does physical evidence show an earlier order? | The current nesting fits best in 6 of 9 quires. |
+| Was the bifolium the unit of writing? | Yes. Same-sheet pages share vocabulary far beyond controls, as Layfield and Davis found; sheets were probably written Xr→Xv→Yr→Yv (inner beats outer: p 0.0008 with LSA, 0.047 TF-IDF, 0.19 Jaccard). |
+| Can the text recover sheet order? | No quire beats a shuffled-page null (p 0.55–0.997). On known-order texts the test finds run-on order in roughly a quarter to a half of quires, but quire 20 shows no page-to-page vocabulary carry-over, where the test is near chance. |
+| Does physical evidence show an earlier order? | Stain and discolouration maps rank the current nesting first in 6 of 9 quires; in quire 20, paint transfers, an edge flaw and wormholes also fix the current stack. Two illustration continuities (78v\|81r, 33v\|40r) are confirmed; the 10v\|15r splash belongs to the current binding. |
 | Is it a plain language? | Not on 12 statistics: h2 is 2.07 bits against 3.06–3.33 for six languages. |
 | Ciphers, codes, cribs, published readings | All failed on held-out text, while the decoders recovered planted signals at 92–99%. |
 | Structure | Strong line and paragraph rules; word-boundary coupling of 0.16–0.19 bits, at natural-language strength and not sandhi. |

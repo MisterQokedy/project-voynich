@@ -26,12 +26,12 @@
 </head>
 <body>
 <div class="titlepage">
-<div class="preprint">Preprint · not peer-reviewed · Version 1.1</div>
+<div class="preprint">Preprint · not peer-reviewed · Version 1.2</div>
 <img class="icon" src="../brand/icon_white.png" alt="">
 <div class="ttl">A copying procedure, not a cipher</div>
 <div class="sub">249 controlled tests on the Voynich Manuscript</div>
 <div class="byline">Paul Stark and Claude Opus 5.5</div>
-<div class="date">26 November 2026 · Version 1.1</div>
+<div class="date">27 November 2026 · Version 1.2</div>
 <div class="blurb">We ran 249 tests on the Voynich Manuscript, most of them checks of ideas other researchers have proposed. Every test was compared against shuffled or machine-generated text, and many were pre-registered. No reading or cipher held up on pages it wasn't built from, and we claim no translation. The text's statistics are well explained by a scribe copying and varying earlier words, with habits tied to line position, extending the self-citation model of Timm and Schinner. We also set out what that model still can't reproduce, and a catalogue of the one-off words it misses. The work was carried out with AI assistance (Claude) and checked by the author. Code, data and models are openly available.</div>
 <div class="licence">© 2026 Paul Stark. Licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).<br>Code: MIT licence · Code, data and model weights: https://github.com/MisterQokedy/project-voynich<br>Manuscript images: Beinecke Rare Book and Manuscript Library, Yale University (MS 408).<br>AI assistance: analyses, code and text by Claude Opus 5.5 (Anthropic) under the author's direction; results checked by the author (see the AI assistance statement).</div>
 </div>
@@ -103,13 +103,19 @@ was not built from and beat those controls. None did, and we claim no
 translation.</p>
 <p>The positive findings mostly confirm earlier work. As Layfield and
 Davis reported, pages on the same bifolium share vocabulary far beyond
-chance, and the four pages of a sheet appear to have been written in
-reading order (Xr→Xv→Yr→Yv, sign-flip p = 0.0008). The text cannot
+chance, and inner conjoint pages share more than outer ones (sign-flip p
+= 0.0008 with LSA, 0.047 with TF-IDF, 0.19 with Jaccard), which suggests
+each sheet was written in reading order (Xr→Xv→Yr→Yv). The text cannot
 recover the order of sheets inside a quire, however: no quire beats a
-shuffled-page null (p 0.55–0.997), and a calibration on texts of known
-order shows that this method could not have detected order at the scale
-of a Voynich quire. Physical evidence (stains, offsets, gutter paint and
-wormholes) fits the current nesting best in six of nine quires.</p>
+shuffled-page null (p 0.55–0.997). Calibration on known-order texts
+shows the test finds the true order in roughly a quarter to a half of
+quires when content runs on from page to page, almost never in an
+alphabetical herbal, and in about 15% of quires of Voynich-like
+generated text. Quire 20, the most testable quire, shows no measurable
+page-to-page vocabulary carry-over, a level at which the test is near
+chance. Stain and discolouration maps rank the current nesting first in
+six of nine quires; in quire 20, paint transfers, an edge flaw and
+wormholes also fix the current stack.</p>
 <p>The text does not behave like a plain language: character
 predictability (h2 = 2.07 bits against 3.06–3.33) and word-order
 information (0.07 against 0.19–0.86 bits) fall outside six comparison
@@ -160,7 +166,7 @@ this is an absence of evidence, not evidence against their idea. The
 physical marks on the pages (stains, ink offsets, paint in the folds,
 wormholes) fit the present binding best in most quires, which suggests
 the present arrangement is old.</p>
-<p><strong>What kind of text it is.</strong> Figure 2 places the
+<p><strong>What kind of text it is.</strong> Figure 1 places the
 manuscript beside six languages, two ciphers and two text generators on
 two measures: how predictable each letter is from the one before, and
 how much word order matters. The manuscript sits outside every language.
@@ -172,8 +178,8 @@ decipherments. Our decoders found hidden messages that we had planted in
 test texts almost every time, but found nothing in the manuscript.</p>
 <figure>
 <img src="../figures/fig2_language_space.png" style="width:78.0%"
-alt="Figure 2. The manuscript (blue) lies outside every natural language tested (grey) on letter predictability and word-order information. Ciphers and generators (orange) come closer. Data: language-test runs, 12-statistic profile." />
-<figcaption aria-hidden="true">Figure 2. The manuscript (blue) lies
+alt="Figure 1. The manuscript (blue) lies outside every natural language tested (grey) on letter predictability and word-order information. Ciphers and generators (orange) come closer. Data: language-test runs, 12-statistic profile." />
+<figcaption aria-hidden="true">Figure 1. The manuscript (blue) lies
 outside every natural language tested (grey) on letter predictability
 and word-order information. Ciphers and generators (orange) come closer.
 Data: language-test runs, 12-statistic profile.</figcaption>
@@ -191,7 +197,7 @@ Timm and Andreas Schinner proposed that the scribe wrote by copying
 earlier words and changing them slightly. We built on their idea, added
 rules for line position and other habits, and tuned the result until it
 matched the manuscript on 24 measures. On pages it was not tuned on, it
-matches about 21 of the 24 (Figure 3). That number should not be read as
+matches about 21 of the 24 (Figure 2). That number should not be read as
 “better than Timm”: we picked the 24 measures ourselves and gave our
 program many more settings to tune towards them, while Timm’s program
 has only a few. What the test shows is that his basic idea still works
@@ -200,8 +206,8 @@ the manuscript is full of long words that appear only once, and our
 program cannot make them the way the scribe did.</p>
 <figure>
 <img src="../figures/fig3_generator_scores.png" style="width:88.0%"
-alt="Figure 3. On held-out sheets, the frozen copy-and-vary generator S6-Z1b falls in the Voynich range on 20.8 of 24 statistics. Timm’s generator (11.4) and shuffled Voynich text (11.9) are shown for reference only: the 24 statistics are our choice, S6-Z1b was tuned towards them with many more settings, and Timm’s generator was not. Each dot is one held-out split; bars are means." />
-<figcaption aria-hidden="true">Figure 3. On held-out sheets, the frozen
+alt="Figure 2. On held-out sheets, the frozen copy-and-vary generator S6-Z1b falls in the Voynich range on 20.8 of 24 statistics. Timm’s generator (11.4) and shuffled Voynich text (11.9) are shown for reference only: the 24 statistics are our choice, S6-Z1b was tuned towards them with many more settings, and Timm’s generator was not. Each dot is one held-out split; bars are means." />
+<figcaption aria-hidden="true">Figure 2. On held-out sheets, the frozen
 copy-and-vary generator S6-Z1b falls in the Voynich range on 20.8 of 24
 statistics. Timm’s generator (11.4) and shuffled Voynich text (11.9) are
 shown for reference only: the 24 statistics are our choice, S6-Z1b was
@@ -250,6 +256,13 @@ before the data were examined. Third, a decipherment counted only if it
 held on held-out pages it was not built from and beat generated-text and
 shuffled controls. Negative results are reported as plainly as positive
 ones; the full register is in Appendix A.</p>
+<p><strong>Changes in version 1.2.</strong> The calibration of the
+sheet-order test is now stated from the calibration results themselves
+(Section 3.2), the physical-evidence summary separates the strong stain
+maps from the weaker methods and adds the illustration continuities
+(Section 3.3), all three similarity metrics are given for the
+within-sheet result, the scoring bands are defined (Section 6.1), the
+correction count has its sources, and figures are numbered in order.</p>
 <p><strong>Changes in version 1.1.</strong> The control-hand test (P3-e)
 is added, and the line-edge pen-form result (P3-c) is now reported as
 ordinary scribal behaviour rather than a new Voynich observation
@@ -300,10 +313,13 @@ by scribe, Currier language and illustration type, confoliate pairs
 score z = +7.4 (TF-IDF), +6.2 (LSA) and +6.6 (Jaccard); inner conjoint
 pairs score +5.7, +7.4 and +3.7. Inner conjoint pairs beat outer ones in
 27 of 35 sheets (LSA sign-flip p = 0.0008; TF-IDF p = 0.047; Jaccard p =
-0.19, not significant). Fitting all twelve four-page orders, Xr→Xv→Yr→Yv
-wins under TF-IDF and LSA. The simplest reading is that each sheet was
-folded and written in reading order, which fits the singulion
-picture.</p>
+0.19, not significant), so this result rests mainly on LSA. Fitting all
+twelve four-page orders, Xr→Xv→Yr→Yv wins under TF-IDF and LSA. The
+simplest reading is that each sheet was folded and written in reading
+order. That fits the singulion picture, but it fits equally well with a
+scribe filling one folded sheet at a time before nesting, which is
+Timm’s “unit of production” reading. The signal shows the sheet was the
+unit of writing, not that sheets were read as loose singulions.</p>
 <h2 data-number="3.2" id="sheet-order-inside-quires"><span
 class="header-section-number">3.2</span> Sheet order inside quires</h2>
 <p>If sheets were written as loose units and later nested, the text
@@ -311,32 +327,68 @@ might still carry their first order. We searched every nesting of nine
 quires for the order that maximises adjacent-sheet similarity and
 compared it with a null built from shuffled pages. No quire beats the
 null under any of three metrics (Fisher combined p 0.55–0.997; Figure
-1). The orders that Layfield and Davis proposed score at the random
+3). The orders that Layfield and Davis proposed score at the random
 level.</p>
 <figure>
 <img src="../figures/fig1_sheet_order_pvalues.png" style="width:85.0%"
-alt="Figure 1. Sheet-order p-values by quire for three similarity metrics, against a shuffled-page null. No quire reaches p = 0.05." />
-<figcaption aria-hidden="true">Figure 1. Sheet-order p-values by quire
+alt="Figure 3. Sheet-order p-values by quire for three similarity metrics, against a shuffled-page null. No quire reaches p = 0.05." />
+<figcaption aria-hidden="true">Figure 3. Sheet-order p-values by quire
 for three similarity metrics, against a shuffled-page null. No quire
 reaches p = 0.05.</figcaption>
 </figure>
-<p>A calibration matters here. On texts of known order, cut into units
-the size of Voynich quires, the same search gives p values of 0.06–0.14
-even when the true order is present. A quire 20-sized test therefore
-cannot see order, and our negative result says nothing against the
-singulion hypothesis itself. The question has to be settled by physical
+<p>A calibration matters here (Appendix C, §9 and S17). We cut
+known-order texts into pages and fake quires of quire 20’s shape and ran
+the same search and null. When content runs on from page to page or
+sheet to sheet (<em>The Forme of Cury</em>, Isidore, the <em>Gesta
+Romanorum</em> and longer texts), the test reaches p &lt; 0.06 in
+roughly 25–47% of quires, with false positives of 1–3% in scrambled
+text. In an alphabetical herbal (Culpeper) it almost never finds the
+order. On Voynich-like generated text with a planted page order (S17-E),
+its power with LSA, the metric used for quire 20, is about 15%. The
+decisive measurement is S17-I, which asked how much vocabulary actually
+carries over from page to page in the Voynich itself. In quire 20 it
+found none: the consecutive-page ratio is 1.15 (CI 0.91–1.42), at the
+no-carry level, and at that level the test is near chance. Quire 20’s
+own p values (0.056, and 0.14 for the f116r variant) therefore cannot be
+read either way. Our negative result says nothing against the singulion
+hypothesis itself; the question has to be settled by physical
 evidence.</p>
 <h2 data-number="3.3" id="physical-evidence"><span
 class="header-section-number">3.3</span> Physical evidence</h2>
 <p>Following Pelling (2006, 2022) and using Dulov’s wormhole survey
 (2022) and the McCrone ink and pigment table (McCrone Associates 2009),
-we scored water stains, ink offsets, gutter paint and wormholes for
-every alternative nesting. The current nesting fits best in six of nine
-quires. In quire 20 the stain pattern runs continuously across sheets in
-their present order (Figure 4), which loose singulions could not
-produce. Skin-side alternation was random with respect to binding
-(Gregory’s rule not supported). Together these suggest that the current
-nesting is old, whatever the writing order was.</p>
+we looked at water stains, discolouration, ink offsets, gutter paint and
+wormholes. The methods differ a great deal in strength. Stain and
+discolouration maps, scored for every alternative nesting, rank the
+current nesting first in six of nine quires; this is the only
+manuscript-wide ranking. The offset detector found true offsets on only
+about 3% of real facing pairs, so it has little power, and gutter paint
+was inconclusive. Quire 20 has the most physical evidence. Its stain
+pattern runs continuously across sheets in their present order (Figure
+4), which loose singulions could not produce. Pelling’s two paint
+transfers (f116r→f115v and f113v→f115r, the second past the vellum edge
+flaw on f114) are both between pages that touch in the current binding,
+and Dulov’s main wormhole track is absent on f111–f112 and grows
+steadily from f113 to f116, as a worm entering from the back board
+through the current stack would make. Skin-side alternation was random
+with respect to binding (Gregory’s rule not supported). Together these
+suggest that the current nesting is old, whatever the writing order
+was.</p>
+<p>We also checked five published claims that an illustration continues
+across a fold that is not a facing pair today. Two are confirmed: the
+streams of 78v|81r and the blue petals of 33v|40r really do continue
+across the join, so those sheets were once open with their inner spread
+exposed. That fits the singulion picture, but it also fits decoration on
+flat sheets before sewing. One claim is contradicted: the splashed stain
+listed for 10v|15r has no partner on 10v’s gutter, while 14v, the
+neighbouring page in the current binding, has brown droplets in mirror
+position on top of its paint. The splash therefore happened with 14v
+facing 15r, in the current binding (pigment-coincidence check P = 0.020
+for 14v|15r; 10v|15r scores 0). Pelling’s 84v|78r continuity also
+failed. These are among the most concrete physical results bearing on
+the Layfield and Davis proposal: two sheets did lie open, but the one
+splash claimed for an earlier facing order belongs to the present
+one.</p>
 <figure>
 <img src="../figures_extra/q20_stain_maps_f103-f108.png"
 style="width:90.0%"
@@ -355,7 +407,7 @@ languages (Latin, Middle and Early Modern English, Italian, German), two
 ciphers, the Timm and Rugg generators, shuffled text and noise.
 Conditional character entropy h2 is 2.07 bits for the manuscript against
 3.06–3.33 for the languages; word-order mutual information is 0.07 bits
-against 0.19–0.86 (Figure 2). Ciphers that expand plaintext (verbose
+against 0.19–0.86 (Figure 1). Ciphers that expand plaintext (verbose
 Latin, sorted Latin) approach the manuscript on h2 but not on word
 order.</p>
 <h2 data-number="4.2" id="decipherment-tests"><span
@@ -453,7 +505,7 @@ Auslasser: 336 text pages, 6,047 lines and 157,000 letters, with the
 segmenter retrained on this hand’s own clean exemplars (rendered
 validation IoU 0.94–0.98). The control hand shows a line-initial effect
 of 0.681 (HOG-only 0.680, p = 0.005; placebo 0.522), above the Voynich
-value (Figure 8). By the pre-registered rule this makes the Voynich
+value (Figure 7). By the pre-registered rule this makes the Voynich
 line-initial effect <strong>ordinary scribal behaviour</strong>. By eye,
 the control’s line-initial letters are often enlarged or near-capital
 forms (long-stemmed l, h, f and p), which is the same kind of habit as
@@ -464,8 +516,8 @@ value is formally the stronger one, but the gap in shape-only AUC is
 finding.</p>
 <figure>
 <img src="../figures/fig8_line_edge_penform.png" style="width:85.0%"
-alt="Figure 8. Held-out AUC for line-edge against mid-line glyph pen form, Voynich (P3-c) and a dated Latin control hand (P3-e, BSB Clm 5905, 1479). Placebo and box controls are at or below chance in both. Derived from images of Beinecke MS 408 (Beinecke Rare Book and Manuscript Library, Yale University) and of Clm 5905 (Bayerische Staatsbibliothek, Munich)." />
-<figcaption aria-hidden="true">Figure 8. Held-out AUC for line-edge
+alt="Figure 7. Held-out AUC for line-edge against mid-line glyph pen form, Voynich (P3-c) and a dated Latin control hand (P3-e, BSB Clm 5905, 1479). Placebo and box controls are at or below chance in both. Derived from images of Beinecke MS 408 (Beinecke Rare Book and Manuscript Library, Yale University) and of Clm 5905 (Bayerische Staatsbibliothek, Munich)." />
+<figcaption aria-hidden="true">Figure 7. Held-out AUC for line-edge
 against mid-line glyph pen form, Voynich (P3-c) and a dated Latin
 control hand (P3-e, BSB Clm 5905, 1479). Placebo and box controls are at
 or below chance in both. Derived from images of Beinecke MS 408
@@ -487,8 +539,15 @@ reported as not testable. They include UV detection of erasures, Davis’s
 stroke criteria for distinguishing scribes (third attempt, H10h),
 ink-session breaks on f105r (the method finds a known break on f115r at
 p = 0.001, but f105r only fades), and a suspected first-glyph column on
-f88v. A literature sweep found about 16 published scribal corrections,
-not the 40 sometimes cited.</p>
+f88v. A literature sweep (P5-l) found about 16 published scribal
+corrections in the Voynichese text, not the 40 sometimes cited: our own
+six visible overwrites, the emendations shown in Zandbergen’s “apparent
+lack of corrections” gallery on voynich.nu (which confirms four of ours
+and adds five), and two uncertain spots raised on the Voynich Ninja
+forum and by Pelling. Stolfi’s “retracer” passages are a different claim
+(later reinforcement of faded ink) and were not counted. The full list
+with sources is <code>lit_corrections/published_corrections.csv</code>
+in the results archive.</p>
 <h1 data-number="6" id="part-iii-a-copy-and-vary-model"><span
 class="header-section-number">6</span> Part III: a copy-and-vary
 model</h1>
@@ -502,9 +561,19 @@ line- and paragraph-position rules, per-language parameters and a
 boundary rule. The target was a 24-statistic profile, and each stage was
 scored on held-out sheet halves under six split directions. The final
 model, S6-Z1b, falls in the Voynich band on 20.8 of 24 statistics on
-average, and passes in 5 of 6 directions (Figure 3). A later variant
-(S6-Z6) did not improve the held-out score and was not kept. The
-generator was then frozen.</p>
+average, and passes in 5 of 6 directions (Figure 2).</p>
+<p>How the bands were set matters. For each statistic, the band is the
+95th percentile of the difference between two halves of the real
+manuscript over 200 random sheet splits, so it does not depend on which
+split is being scored. On this scale two real halves score 22–24 of 24
+against each other, which is the ceiling a perfect generator could
+expect. An earlier generator (the hybrid model) looked successful only
+under the project’s first bands, which were about twice as wide as the
+sample size allowed: it passed on 19 of 20 seeds under those bands and
+on none under page-bootstrap bands. S6-Z1b’s 20.8 is measured with the
+stricter split-independent bands, so it does not have that problem. A
+later variant (S6-Z6) did not improve the held-out score and was not
+kept. The generator was then frozen.</p>
 <p>On the same held-out sheets Timm’s generator scores 11.4 and shuffled
 Voynich text 11.9. <strong>This does not show that our generator is
 better than Timm’s, and it should not be cited as showing that.</strong>
@@ -525,7 +594,7 @@ idea, not replacing it.</p>
 class="header-section-number">6.2</span> What the generator misses</h2>
 <p>The generator still misses Zipf slope in 13 of 30 runs and three
 other statistics in 9–11 runs. Its biggest failure is one-off words
-(Figure 7). In the manuscript 13.8% of words occur once, and only 8.3%
+(Figure 8). In the manuscript 13.8% of words occur once, and only 8.3%
 of those are one edit from a word in the previous 40. The generator
 makes fewer one-offs (7–9%) and builds 20–31% of them by local edits.
 Adding one-off share to the fitting objective did not fix this: the fit
@@ -535,8 +604,8 @@ cluster by subject the way topic nouns do in German herbals. Appendix E
 summarises a catalogue of the 1,328 most isolated one-offs.</p>
 <figure>
 <img src="../figures/fig7_oneoffs.png" style="width:85.0%"
-alt="Figure 7. One-off words: share and local-edit rate in the manuscript and two generator versions. S6-Z1b values are the midpoints of its ranges (0.07–0.09 and 0.20–0.31)." />
-<figcaption aria-hidden="true">Figure 7. One-off words: share and
+alt="Figure 8. One-off words: share and local-edit rate in the manuscript and two generator versions. S6-Z1b values are the midpoints of its ranges (0.07–0.09 and 0.20–0.31)." />
+<figcaption aria-hidden="true">Figure 8. One-off words: share and
 local-edit rate in the manuscript and two generator versions. S6-Z1b
 values are the midpoints of its ranges (0.07–0.09 and
 0.20–0.31).</figcaption>
@@ -597,8 +666,8 @@ manuscripts</td>
 </tr>
 <tr class="odd">
 <td>Same-sheet vocabulary</td>
-<td>Confoliate pairs z +6.2 to +7.4; within-sheet order Xr→Xv→Yr→Yv (p
-0.0008)</td>
+<td>Confoliate pairs z +6.2 to +7.4; inner beats outer (p 0.0008 with
+LSA; 0.047 TF-IDF; 0.19 Jaccard), suggesting order Xr→Xv→Yr→Yv</td>
 <td>Null stratified by scribe, language and illustration</td>
 </tr>
 <tr class="even">
